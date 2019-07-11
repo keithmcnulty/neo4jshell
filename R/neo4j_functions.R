@@ -2,15 +2,17 @@ library(sys)
 library(ssh)
 library(magrittr)
 
+
 #' Execute a query string in Neo4J using cypher-shell and capture output
 #'
-#' @param con list containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
-#' @param qry character string of the query or queries to be sent to Neo4J.  Read queries should be single queries.
-#' @param shell_path path to cypher-shell to be passed to the system command
+#' @param con List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
+#' @param qry Character string of the query or queries to be sent to Neo4J.  Read queries should be single queries.
+#' @param shell_path Path to cypher-shell to be passed to the system command
 #'
 #' @return A dataframe of results if the read query is successful.  A text string if an error is encountered.
 #' Embedded lists will have commas converted to semicolons.  Write queries will return a zero length response if successful.
 #' If multiple read queries were submitted, only the results of the final query will be returned.
+
 
 neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry = NULL,
                         shell_path = "cypher-shell") {
@@ -104,14 +106,15 @@ neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry 
 }
 
 
+
 #' Upload a csv or a compressed file to Neo4J import folder - accepts .csv, .zip and .tar.gz files
 #'
-#' @param con list containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
-#' @param source character string of local path to the zip or tar.gz compressed csv file
-#' @param import_dir character string of path to the import directory on the Neo4J server for ssh file transfer and unzipping
-#' @param gunzip_path path to gunzip to be passed to the system command on the Neo4J server
-#' @param tar_path path to tar to be passed to the system command on the Neo4J server
-#' @param unzip_path path to unzip to be passed to the system command on the Neo4J server
+#' @param con List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
+#' @param source Character string of local path to the csv, zip or tar.gz compressed csv file
+#' @param import_dir Character string of path to the import directory on the Neo4J server for ssh file transfer and unzipping
+#' @param gunzip_path Path to gunzip to be passed to the system command on the Neo4J server
+#' @param tar_path Path to tar to be passed to the system command on the Neo4J server
+#' @param unzip_path Path to unzip to be passed to the system command on the Neo4J server
 #'
 #' @return System messages confirming success or error.
 
@@ -150,11 +153,12 @@ neo4j_import <- function (con = list(address = NULL, uid = NULL, pwd = NULL), so
 }
 
 
+
 #' Remove files from the Neo4J import directory
 #'
-#' @param con list containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
-#' @param files character vector of file names to be passed to the rm command on the Neo4J server
-#' @param import_dir character string of path to the import directory on the Neo4J server
+#' @param con List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
+#' @param files Character vector of file names to be passed to the rm command on the Neo4J server
+#' @param import_dir Character string of path to the import directory on the Neo4J server
 #'
 #' @return A success message if successful.  A text string if an error is encountered.
 #'
@@ -184,13 +188,15 @@ neo4j_rmfiles <- function (con = list(address = NULL, uid = NULL, pwd = NULL), f
 
 }
 
+
 #' Remove subdirectory and all its contents from the Neo4J import directory
 #'
-#' @param con list containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
-#' @param dir character string of the import subdirectory name to be deleted on the Neo4J server
-#' @param import_dir character string of path to the import directory on the Neo4J server
+#' @param con List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
+#' @param dir Character string of the import subdirectory name to be deleted on the Neo4J server
+#' @param import_dir Character string of path to the import directory on the Neo4J server
 #'
 #' @return A success message if successful.  A text string if an error is encountered.
+
 
 neo4j_rmdir <- function (con = list(address = NULL, uid = NULL, pwd = NULL), dir = NULL, import_dir = NULL) {
 
