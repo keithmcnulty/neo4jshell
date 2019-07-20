@@ -2,7 +2,7 @@
 #'
 #' @param con List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
 #' @param qry Character string of the query or queries to be sent to Neo4J.  Read queries should be single queries.
-#' @param shell_path Path to cypher-shell to be passed to the system command
+#' @param shell_path Local path to cypher-shell executable
 #'
 #' @return A dataframe of results if the read query is successful.  A text string if an error is encountered.
 #' Write queries will return a zero length response if successful.
