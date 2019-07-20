@@ -34,7 +34,7 @@ neo4jshell::neo4j_query(con = neo_movies, qry = CQL)
 
 ```
 
-### Server management
+### Server management (designed for working with remote Neo4J servers)
 
 - `neo4j_import()` imports a csv, zip or tar.gz file from a local sources into the specified import directory on the Neo4J server and uncompresses compressed files
 - `neo4j_rmfiles()` removes specified files from specified Neo4J import directory
