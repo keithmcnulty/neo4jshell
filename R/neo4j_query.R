@@ -74,17 +74,17 @@ neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry 
 
   # if all queries successful, write results of final query or confirm zero-length response
   if (sum(output) == 0) {
-      tmp <- readLines(get(paste0("tmp1_", length(qry))))
-      if (length(tmp) > 0) {
-        tmp <- gsub("(?:\\G(?!^)|\\[)[^][,]*\\K,(?=[^][]*])", ";;;", tmp, perl = TRUE) # deal with embedded [] lists for read.csv
-        tmp <- gsub("(?:\\G(?!^)|\\{)[^{},]*\\K,(?=[^{}]*})", ";;;", tmp, perl = TRUE) # deal with embedded {} lists for read.csv
-        write(tmp, tmp_final)
-        r <- read.csv(tmp_final)
-        r <- sapply(r, function (x) gsub(";;;", ",", x))
-        as.data.frame(r)
-      } else {
-        message("Query succeeded with a zero length response from Neo4J")
-      }
+    tmp <- readLines(get(paste0("tmp1_", length(qry))))
+    if (length(tmp) > 0) {
+      tmp <- gsub("(?:\\G(?!^)|\\[)[^][,]*\\K,(?=[^][]*])", ";;;", tmp, perl = TRUE) # deal with embedded [] lists for read.csv
+      tmp <- gsub("(?:\\G(?!^)|\\{)[^{},]*\\K,(?=[^{}]*})", ";;;", tmp, perl = TRUE) # deal with embedded {} lists for read.csv
+      write(tmp, tmp_final)
+      r <- read.csv(tmp_final)
+      r <- sapply(r, function (x) gsub(";;;", ",", x))
+      as.data.frame(r)
+    } else {
+      message("Query succeeded with a zero length response from Neo4J")
+    }
   } else {
     # if any error occurred, show all responses from Neo4J
     if (length(qry) == 1) {
@@ -96,7 +96,6 @@ neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry 
       }
       tmpvec %>% paste(collapse = " ") %>% noquote() %>% stop(call. = FALSE)
     }
-
 
   }
 
