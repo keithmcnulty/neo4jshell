@@ -8,7 +8,7 @@ neo4j_rmdir(con = list(address = NULL, uid = NULL, pwd = NULL),
   dir = NULL, import_dir = NULL)
 }
 \arguments{
-\item{con}{List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server}
+\item{con}{List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
 
 \item{dir}{Character string of the import subdirectory name to be deleted on the Neo4J server}
 

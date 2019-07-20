@@ -1,6 +1,6 @@
 #' Execute a query string in Neo4J using cypher-shell and capture output
 #'
-#' @param con List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
+#' @param con List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
 #' @param qry Character string of the query or queries to be sent to Neo4J.  Read queries should be single queries.
 #' @param shell_path Path to cypher-shell to be passed to the system command
 #'

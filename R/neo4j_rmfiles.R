@@ -1,6 +1,6 @@
 #' Remove files from the Neo4J import directory
 #'
-#' @param con List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
+#' @param con List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
 #' @param files Character vector of file names to be passed to the rm command on the Neo4J server.  Use files = "*" to remove all files from the import directory.
 #' @param import_dir Character string of path to the import directory on the Neo4J server
 #'

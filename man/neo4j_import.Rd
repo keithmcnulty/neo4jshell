@@ -9,7 +9,7 @@ neo4j_import(con = list(address = NULL, uid = NULL, pwd = NULL),
   gunzip_path = "gunzip", tar_path = "tar")
 }
 \arguments{
-\item{con}{List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server}
+\item{con}{List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
 
 \item{source}{Character string of local path to the csv, zip or tar.gz compressed csv file}
 

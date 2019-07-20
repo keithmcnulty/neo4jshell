@@ -1,6 +1,6 @@
 #' Upload a csv or a compressed file to Neo4J import folder - accepts .csv, .zip and .tar.gz files
 #'
-#' @param con List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
+#' @param con List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
 #' @param source Character string of local path to the csv, zip or tar.gz compressed csv file
 #' @param import_dir Character string of path to the import directory on the Neo4J server for ssh file transfer and unzipping
 #' @param gunzip_path Path to gunzip to be passed to the system command on the Neo4J server

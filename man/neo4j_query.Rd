@@ -8,7 +8,7 @@ neo4j_query(con = list(address = NULL, uid = NULL, pwd = NULL),
   qry = NULL, shell_path = "cypher-shell")
 }
 \arguments{
-\item{con}{List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server}
+\item{con}{List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
 
 \item{qry}{Character string of the query or queries to be sent to Neo4J.  Read queries should be single queries.}
 

@@ -8,7 +8,7 @@ neo4j_rmfiles(con = list(address = NULL, uid = NULL, pwd = NULL),
   files = NULL, import_dir = NULL)
 }
 \arguments{
-\item{con}{List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server}
+\item{con}{List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
 
 \item{files}{Character vector of file names to be passed to the rm command on the Neo4J server.  Use files = "*" to remove all files from the import directory.}
 

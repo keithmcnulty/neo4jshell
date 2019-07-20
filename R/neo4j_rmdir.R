@@ -1,6 +1,6 @@
 #' Remove subdirectory and all its contents from the Neo4J import directory
 #'
-#' @param con List containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server
+#' @param con List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
 #' @param dir Character string of the import subdirectory name to be deleted on the Neo4J server
 #' @param import_dir Character string of path to the import directory on the Neo4J server
 #'
