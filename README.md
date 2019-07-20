@@ -1,5 +1,5 @@
 # neo4jshell
-Efficient querying and server management for Neo4J in R using bolt and cypher-shell.
+Efficient querying and server management for Neo4J in R using bolt and cypher-shell.  Requires cypher-shell to be available for querying.
 
 ## Installation
 
