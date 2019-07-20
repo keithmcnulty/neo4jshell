@@ -5,7 +5,7 @@
 #' @param shell_path Path to cypher-shell to be passed to the system command
 #'
 #' @return A dataframe of results if the read query is successful.  A text string if an error is encountered.
-#' Embedded lists will have commas converted to semicolons.  Write queries will return a zero length response if successful.
+#' Write queries will return a zero length response if successful.
 #' If multiple read queries were submitted, only the results of the final query will be returned.
 
 
@@ -76,10 +76,12 @@ neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry 
   if (sum(output) == 0) {
       tmp <- readLines(get(paste0("tmp1_", length(qry))))
       if (length(tmp) > 0) {
-      tmp <- gsub("(?:\\G(?!^)|\\[)[^][,]*\\K,(?=[^][]*])", ";", tmp, perl = TRUE) # deal with embedded [] lists for read.csv
-      tmp <- gsub("(?:\\G(?!^)|\\{)[^{},]*\\K,(?=[^{}]*})", ";", tmp, perl = TRUE) # deal with embedded {} lists for read.csv
+      tmp <- gsub("(?:\\G(?!^)|\\[)[^][,]*\\K,(?=[^][]*])", ";;;", tmp, perl = TRUE) # deal with embedded [] lists for read.csv
+      tmp <- gsub("(?:\\G(?!^)|\\{)[^{},]*\\K,(?=[^{}]*})", ";;;", tmp, perl = TRUE) # deal with embedded {} lists for read.csv
       write(tmp, tmp_final)
-      read.csv(tmp_final)
+      r <- read.csv(tmp_final)
+      r <- sapply(r, function (x) gsub(";;;", ",", x))
+      as.data.frame(r)
       } else {
         message("Query succeeded with a zero length response from Neo4J")
       }

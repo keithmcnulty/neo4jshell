@@ -16,7 +16,7 @@ neo4j_query(con = list(address = NULL, uid = NULL, pwd = NULL),
 }
 \value{
 A dataframe of results if the read query is successful.  A text string if an error is encountered.
-Embedded lists will have commas converted to semicolons.  Write queries will return a zero length response if successful.
+Write queries will return a zero length response if successful.
 If multiple read queries were submitted, only the results of the final query will be returned.
 }
 \description{
