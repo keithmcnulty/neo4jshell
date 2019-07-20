@@ -15,16 +15,17 @@ devtools::install_github("keithmcnulty/neo4jshell")
 
 In this example, the movies dataset has been started locally in the Neo4J browser, with a user created that has the credentials indicated.   cypher-shell is in the local system path. 
 ```
+# set credentials
 neo_movies <- list(address = "bolt://localhost:7687", uid = "neo4juser", pwd = "neo4juser")
 
+# find directors of movies with Kevin Bacon as actor
 CQL <- 'MATCH (p1:Person {name: "Kevin Bacon"})-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p2:Person)
 RETURN p2.name, m.title'
 
+# run query
 neo4jshell::neo4j_query(con = neo_movies, qry = CQL)
 
 
-
-Output:
 
      p2.name         m.title
 1 Ron Howard     Frost/Nixon
