@@ -13,6 +13,26 @@ devtools::install_github("keithmcnulty/neo4jshell")
 
 - `neo4j_query()` sends queries to the specified Neo4J graph database and, where appropriate, retrieves the results in a dataframe.
 
+In this example, the movies dataset has been started locally in the Neo4J browser, with a user created that has the credentials indicated.   cypher-shell is in the local system path. 
+```
+neo_movies <- list(address = "bolt://localhost:7687", uid = "neo4juser", pwd = "neo4juser")
+
+CQL <- 'MATCH (p1:Person {name: "Kevin Bacon"})-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p2:Person)
+RETURN p2.name, m.title'
+
+neo4jshell::neo4j_query(con = neo_movies, qry = CQL)
+
+
+
+Output:
+
+     p2.name         m.title
+1 Ron Howard     Frost/Nixon
+2 Rob Reiner  A Few Good Men
+3 Ron Howard       Apollo 13
+
+```
+
 ### Server management
 
 - `neo4j_import()` imports a csv, zip or tar.gz file from a local sources into the specified import directory on the Neo4J server and uncompresses compressed files
