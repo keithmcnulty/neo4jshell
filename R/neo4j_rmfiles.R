@@ -11,8 +11,6 @@
 
 neo4j_rmfiles <- function (local = TRUE, con = list(address = NULL, uid = NULL, pwd = NULL), files = NULL, import_dir = NULL) {
 
-  library(magrittr)
-
   if (substr(import_dir, nchar(import_dir), nchar(import_dir)) != "/") {
     import_dir <- paste0(import_dir, "/")
   }
