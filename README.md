@@ -15,7 +15,7 @@ devtools::install_github("keithmcnulty/neo4jshell")
 
 In this example, the movies dataset has been started locally in the Neo4J browser, with a user created that has the credentials indicated.   cypher-shell is in the local system path. 
 ```
-# set credentials
+# set credentials (no port required in bolt address)
 neo_movies <- list(address = "bolt://localhost", uid = "neo4juser", pwd = "neo4juser")
 
 # find directors of movies with Kevin Bacon as actor
@@ -39,4 +39,31 @@ neo4jshell::neo4j_query(con = neo_movies, qry = CQL)
 - `neo4j_import()` imports a csv, zip or tar.gz file from a local sources into the specified import directory on the Neo4J server and uncompresses compressed files
 - `neo4j_rmfiles()` removes specified files from specified Neo4J import directory
 - `neo4j_rmdir()` removes entire specified subdirectories from specified Neo4J import directory
+
+In this general example, we can see how these functions can be used for smooth ETL to a remote Neo4J server.  
+
+```
+# credentials (note no port required in server address)
+neo_server <- list(address = "bolt://neo.server.address", uid = "neo4j", pwd = "password")
+
+# csv data file to be loaded onto Neo4J server (path relative to current working directory)
+datafile <- "data.csv"
+
+# CQL query to write data from datafile to Neo4J
+loadcsv_CQL <- "LOAD CSV FROM 'file:///data.csv' etc etc"
+
+# path to import directory on remote Neo4J server (should be relative to neo4j user home directory on remote server)
+impdir <- "./import"
+
+# import data
+neo4jshell::neo4j_import(con = neo_server, source = datafile, import_dir = impdir)
+
+# write data to Neo4J (assumes cypher-shell is in system PATH variable)
+neo4jshell:neo4j_query(con = neo_server, qry = loadcsv_CQL)
+
+# remove data file as clean-up
+neo4jshell::neo4j_rmfiles(con = neo_server, files = datafile, import_dir = impdir)
+
+
+```
 
