@@ -76,12 +76,12 @@ First, the code below is relative to user and is using neo4j 3.5.8 community ins
 ```
 ## graph setup
 graph = list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
-SHELL_LOC = "/Users/btibert/neo4j-community-3.5.8/bin/cypher-shell"
-IMPORT_LOC = "/Users/btibert/neo4j-community-3.5.8/import/"
+SHELL_LOC = path.expand("/Users/btibert/neo4j-community-3.5.8/bin/cypher-shell")
+IMPORT_LOC = path.expand("/Users/btibert/neo4j-community-3.5.8/import/")
 ```
 
 - `graph` = the connection information
-- `SHELL_LOC` = the full path to the `cypher-shell` ulility.  NOTE:  currently `~` is not supported.
+- `SHELL_LOC` = the full path to the `cypher-shell` ulility.  
 - `IMPORT_LOC` = for the same server, the `import` directory, fully specified
 
 Below, we will create a simple datafame and save that dataset to a csv file.
