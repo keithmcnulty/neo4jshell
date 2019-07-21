@@ -67,3 +67,67 @@ neo4jshell::neo4j_rmfiles(con = neo_server, files = datafile, import_dir = impdi
 
 ```
 
+### Local Development
+
+If you are working with the `neo4j` server locally, below will help you get started.  
+
+First, the code below is relative to user and is using neo4j 3.5.8 community installed at my user's root.
+
+```
+## graph setup
+graph = list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
+SHELL_LOC = path.expand("~/neo4j-community-3.5.8/bin/cypher-shell")
+IMPORT_LOC = path.expand("~/neo4j-community-3.5.8/import/")
+```
+
+- `graph` = the connection information
+- `SHELL_LOC` = the full path to the `cypher-shell` ulility.  
+- `IMPORT_LOC` = for the same server, the `import` directory, fully specified
+
+Below, we will create a simple datafame and save that dataset to a csv file.
+
+```
+df = data.frame(id = 1:10, 
+                b = letters[1:10], 
+                stringsAsFactors=FALSE)
+write.csv(df, "test-df.csv")
+```
+
+This package supports a number of delivery formats, but for simplicity sake, a `csv` file is created above.
+
+Below, we will confirm the location of the file in our __current__ working directory, and then use `neo4j_import` to place a **copy** of this file within the import directory you defined in `IMPORT_LOC` above.  
+
+```
+# test that the file was saved to the current working directory
+# list.files(pattern = "test")
+# [1] "test-df.csv"
+neo4j_import(local = TRUE, graph, source="test-df.csv", import_dir = IMPORT_LOC)
+```
+
+Now, let's remove that file from the import directory of our local server
+
+```
+## remove the file
+neo4j_rmfiles(local = TRUE, graph, files="test-df.csv", import_dir = IMPORT_LOC)
+```
+
+Lastly, if you want to use a subdiretory to help manage your files during an ETL into `neo4j`, you can remove that local subdirectory when your process has completed.
+
+Below walks through the steps to confirm this feature.
+
+```
+## create a test subdirectory
+fs::dir_create(paste0(IMPORT_LOC, "test-dr"))
+
+## what exists?
+fs::dir_ls(IMPORT_LOC)
+
+## remove the directory
+neo4j_rmdir(local = TRUE, graph, dir = "test-dr", import_dir = IMPORT_LOC)
+
+## confirm
+fs::dir_ls(IMPORT_LOC)
+```
+
+
+
