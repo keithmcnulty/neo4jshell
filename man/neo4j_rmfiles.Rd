@@ -4,18 +4,20 @@
 \alias{neo4j_rmfiles}
 \title{Remove files from the Neo4J import directory}
 \usage{
-neo4j_rmfiles(con = list(address = NULL, uid = NULL, pwd = NULL),
-  files = NULL, import_dir = NULL)
+neo4j_rmfiles(local = TRUE, con = list(address = NULL, uid = NULL, pwd
+  = NULL), files = NULL, import_dir = NULL)
 }
 \arguments{
-\item{con}{List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
+\item{local}{Logical indicating whether import is to a locally hosted or remotely hosted server.}
 
-\item{files}{Character vector of file names to be passed to the rm command on the Neo4J server.  Use files = "*" to remove all files from the import directory.}
+\item{con}{If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
 
-\item{import_dir}{Character string of path to the import directory on the Neo4J server}
+\item{files}{Character vector of file names to be removed.}
+
+\item{import_dir}{Character string of path to the Neo4J import directory.}
 }
 \value{
-A success message if successful.  A text string if an error is encountered.
+A success message if successful.  An error message otherwise.
 }
 \description{
 Remove files from the Neo4J import directory

@@ -4,18 +4,20 @@
 \alias{neo4j_rmdir}
 \title{Remove subdirectory and all its contents from the Neo4J import directory}
 \usage{
-neo4j_rmdir(con = list(address = NULL, uid = NULL, pwd = NULL),
-  dir = NULL, import_dir = NULL)
+neo4j_rmdir(local = FALSE, con = list(address = NULL, uid = NULL, pwd =
+  NULL), dir = NULL, import_dir = NULL)
 }
 \arguments{
-\item{con}{List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
+\item{local}{Logical indicating whether import is to a locally hosted or remotely hosted server.}
 
-\item{dir}{Character string of the import subdirectory name to be deleted on the Neo4J server}
+\item{con}{If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
 
-\item{import_dir}{Character string of path to the import directory on the Neo4J server}
+\item{dir}{Character string of the Neo4J import subdirectory name to be deleted.}
+
+\item{import_dir}{Character string of path to the Neo4J import directory.}
 }
 \value{
-A success message if successful.  A text string if an error is encountered.
+A success message if successful.  A error message otherwise.
 }
 \description{
 Remove subdirectory and all its contents from the Neo4J import directory

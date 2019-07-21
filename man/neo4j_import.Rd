@@ -2,28 +2,30 @@
 % Please edit documentation in R/neo4j_import.R
 \name{neo4j_import}
 \alias{neo4j_import}
-\title{Upload a csv or a compressed file to Neo4J import folder - accepts .csv, .zip and .tar.gz files}
+\title{Upload a csv or a compressed file to Neo4J import folder - accepts .csv, .zip and .tar.gz files.  Leaves only uncompressed files behind.}
 \usage{
-neo4j_import(con = list(address = NULL, uid = NULL, pwd = NULL),
-  source = NULL, import_dir = NULL, unzip_path = "unzip",
+neo4j_import(local = FALSE, con = list(address = NULL, uid = NULL, pwd
+  = NULL), source = NULL, import_dir = NULL, unzip_path = "unzip",
   gunzip_path = "gunzip", tar_path = "tar")
 }
 \arguments{
-\item{con}{List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
+\item{local}{Logical indicating whether import is to a locally hosted or a remotely hosted server.}
 
-\item{source}{Character string of local path to the csv, zip or tar.gz compressed csv file}
+\item{con}{If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
 
-\item{import_dir}{Character string of path to the import directory on the Neo4J server for ssh file transfer and unzipping}
+\item{source}{Character string of local path to the csv, zip or tar.gz compressed csv file to be imported}
 
-\item{unzip_path}{Path to unzip to be passed to the system command on the Neo4J server}
+\item{import_dir}{Character string of full path to the Neo4J import directory}
 
-\item{gunzip_path}{Path to gunzip to be passed to the system command on the Neo4J server}
+\item{unzip_path}{Path to unzip on the local or remote server to be passed to the system command if necessary.}
 
-\item{tar_path}{Path to tar to be passed to the system command on the Neo4J server}
+\item{gunzip_path}{Path to gunzip on the local or remote server to be passed to the system command following import if necessary.}
+
+\item{tar_path}{Path to tar on the local or remote server to be passed to the system command following import if necessary.}
 }
 \value{
 System messages confirming success or error.
 }
 \description{
-Upload a csv or a compressed file to Neo4J import folder - accepts .csv, .zip and .tar.gz files
+Upload a csv or a compressed file to Neo4J import folder - accepts .csv, .zip and .tar.gz files.  Leaves only uncompressed files behind.
 }
