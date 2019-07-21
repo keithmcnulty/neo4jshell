@@ -2,7 +2,7 @@
 % Please edit documentation in R/neo4j_import.R
 \name{neo4j_import}
 \alias{neo4j_import}
-\title{Upload a csv or a compressed file to Neo4J import folder - accepts .csv, .zip and .tar.gz files.  Leaves only uncompressed files behind.}
+\title{Imports a csv or a compressed file to Neo4J import folder.}
 \usage{
 neo4j_import(local = FALSE, con = list(address = NULL, uid = NULL, pwd
   = NULL), source = NULL, import_dir = NULL, unzip_path = "unzip",
@@ -24,8 +24,8 @@ neo4j_import(local = FALSE, con = list(address = NULL, uid = NULL, pwd
 \item{tar_path}{Path to tar on the local or remote server to be passed to the system command following import if necessary.}
 }
 \value{
-System messages confirming success or error.
+System messages confirming success or error.  zip or tar files will be removed after import and decompression.
 }
 \description{
-Upload a csv or a compressed file to Neo4J import folder - accepts .csv, .zip and .tar.gz files.  Leaves only uncompressed files behind.
+Imports a csv or a compressed file to Neo4J import folder.
 }

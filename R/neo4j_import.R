@@ -1,4 +1,4 @@
-#' Upload a csv or a compressed file to Neo4J import folder - accepts .csv, .zip and .tar.gz files.  Leaves only uncompressed files behind.
+#' Imports a csv or a compressed file to Neo4J import folder.
 #'
 #' @param local Logical indicating whether import is to a locally hosted or a remotely hosted server.
 #' @param con If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
@@ -8,7 +8,7 @@
 #' @param tar_path Path to tar on the local or remote server to be passed to the system command following import if necessary.
 #' @param unzip_path Path to unzip on the local or remote server to be passed to the system command if necessary.
 #'
-#' @return System messages confirming success or error.
+#' @return System messages confirming success or error.  zip or tar files will be removed after import and decompression.
 
 
 neo4j_import <- function (local = FALSE, con = list(address = NULL, uid = NULL, pwd = NULL), source = NULL,
