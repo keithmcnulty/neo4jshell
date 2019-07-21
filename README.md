@@ -76,8 +76,8 @@ First, the code below is relative to user and is using neo4j 3.5.8 community ins
 ```
 ## graph setup
 graph = list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
-SHELL_LOC = path.expand("/Users/btibert/neo4j-community-3.5.8/bin/cypher-shell")
-IMPORT_LOC = path.expand("/Users/btibert/neo4j-community-3.5.8/import/")
+SHELL_LOC = path.expand("~/neo4j-community-3.5.8/bin/cypher-shell")
+IMPORT_LOC = path.expand("~/neo4j-community-3.5.8/import/")
 ```
 
 - `graph` = the connection information
