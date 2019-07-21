@@ -12,5 +12,6 @@ LazyData: true
 Imports:
     magrittr,
     ssh,
-    sys
+    sys,
+    fs
 RoxygenNote: 6.1.1

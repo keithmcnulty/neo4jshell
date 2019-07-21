@@ -3,12 +3,13 @@
 #' @param con List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
 #' @param files Character vector of file names to be passed to the rm command on the Neo4J server.  Use files = "*" to remove all files from the import directory.
 #' @param import_dir Character string of path to the import directory on the Neo4J server
+#' @param local_dev Logical to determine if usage is on remote server (FALSE, default) or if server is on local machine (TRUE)
 #'
 #' @return A success message if successful.  A text string if an error is encountered.
 
 
 
-neo4j_rmfiles <- function (con = list(address = NULL, uid = NULL, pwd = NULL), files = NULL, import_dir = NULL) {
+neo4j_rmfiles <- function (con = list(address = NULL, uid = NULL, pwd = NULL), files = NULL, import_dir = NULL, local_dev = FALSE) {
 
   if (substr(import_dir, nchar(import_dir), nchar(import_dir)) != "/") {
     import_dir <- paste0(import_dir, "/")
@@ -17,16 +18,22 @@ neo4j_rmfiles <- function (con = list(address = NULL, uid = NULL, pwd = NULL), f
   files <- paste0(import_dir, files)
   filestring <- paste(files, collapse = " ")
   tmp1 <- tempfile()
-
-  ssh_uid <- paste0(con$uid, "@", basename(con$address))
-  session <- ssh::ssh_connect(ssh_uid, passwd = con$pwd)
-  output <- ssh::ssh_exec_wait(session, command = paste("rm", filestring), std_err = tmp1)
-  ssh::ssh_disconnect(session)
-
-  if (output == 0) {
-    message("Files removed successfuly!")
+  
+  if (local_dev) {
+    fs::file_delete(filestring)
+    if (!fs::file_exists(filestring)) {
+      message("Files removed successfuly!")
+    }
   } else {
-    readLines(tmp1) %>% paste(collapse = " ") %>% noquote() %>% warning(call. = FALSE)
+    ssh_uid <- paste0(con$uid, "@", basename(con$address))
+    session <- ssh::ssh_connect(ssh_uid, passwd = con$pwd)
+    output <- ssh::ssh_exec_wait(session, command = paste("rm", filestring), std_err = tmp1)
+    ssh::ssh_disconnect(session)
+    
+    if (output == 0) {
+      message("Files removed successfuly!")
+    } else {
+      readLines(tmp1) %>% paste(collapse = " ") %>% noquote() %>% warning(call. = FALSE)
+    }
   }
-
 }
