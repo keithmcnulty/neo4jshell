@@ -131,5 +131,13 @@ neo4j_rmdir(local = TRUE, graph, dir = "test-dr", import_dir = IMPORT_LOC)
 fs::dir_ls(IMPORT_LOC)
 ```
 
+### Local server administration and control
+
+`neo4j_start()` starts a local Neo4J instance
+`neo4j_stop()` stops a local Neo4J instance
+`neo4j_restart()` restarts a local Neo4J instance
+`neo4j_status()` returns the status of a local Neo4J instance
+`neo4j_wipe()` wipes an entire graph from a local Neo4J instance
+
 
 
