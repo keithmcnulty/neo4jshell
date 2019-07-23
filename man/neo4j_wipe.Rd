@@ -2,18 +2,18 @@
 % Please edit documentation in R/neo4j_wipe.R
 \name{neo4j_wipe}
 \alias{neo4j_wipe}
-\title{Wipe a complete graph database in Neo4J}
+\title{Wipe a complete local graph database in Neo4J}
 \usage{
 neo4j_wipe(graph = NULL, data_path = NULL)
 }
 \arguments{
-\item{graph}{Name of graph db object to wiped}
+\item{graph}{Name of local graph database object to wiped}
 
-\item{data_path}{Path to the Neo4J data directory}
+\item{data_path}{Path to the local Neo4J data directory}
 }
 \value{
 Success or error message
 }
 \description{
-Wipe a complete graph database in Neo4J
+Wipe a complete local graph database in Neo4J
 }

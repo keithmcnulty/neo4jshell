@@ -1,9 +1,11 @@
-#' Wipe a complete graph database in Neo4J
+#' Wipe a complete local graph database in Neo4J
 #'
-#' @param graph Name of graph db object to wiped
-#' @param data_path Path to the Neo4J data directory
+#' @param graph Name of local graph database object to wiped
+#' @param data_path Path to the local Neo4J data directory
 #'
 #' @return Success or error message
+#'
+#' @examples neo4j_wipe(graph = "movies.db", data_path = path.expand("~/neo4j-community-3.5.8/data))
 
 neo4j_wipe <- function(graph = NULL, data_path = NULL) {
   if (substr(data_path, nchar(data_path), nchar(data_path)) != "/") {
