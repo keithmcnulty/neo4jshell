@@ -22,3 +22,6 @@ A success message if successful.  An error message otherwise.
 \description{
 Remove files from the Neo4J import directory
 }
+\examples{
+neo4j_rmfiles(local = TRUE, files = "mygraphfile.csv", import_dir = path.expand("~/neo4j-community-3.5.8/import"))
+}

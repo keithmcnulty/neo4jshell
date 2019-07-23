@@ -22,3 +22,6 @@ A success message if successful.  A error message otherwise.
 \description{
 Remove subdirectory and all its contents from the Neo4J import directory
 }
+\examples{
+neo4j_rmdir(local = TRUE, dir = "mygraphdata", import_dir = path.expand("~/neo4j-community-3.5.8/import"))
+}

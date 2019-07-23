@@ -6,6 +6,9 @@
 #' @param import_dir Character string of path to the Neo4J import directory.
 #'
 #' @return A success message if successful.  A error message otherwise.
+#'
+#' @examples
+#' neo4j_rmdir(local = TRUE, dir = "mygraphdata", import_dir = path.expand("~/neo4j-community-3.5.8/import"))
 
 
 neo4j_rmdir <- function (local = FALSE, con = list(address = NULL, uid = NULL, pwd = NULL), dir = NULL, import_dir = NULL) {
@@ -26,9 +29,13 @@ neo4j_rmdir <- function (local = FALSE, con = list(address = NULL, uid = NULL, p
 
   } else {
 
-    args <- c("-r", filestring)
-    output <- sys::exec_wait("rm", args = args, std_err = tmp1)
-
+    if (.Platform$OS.type == "windows") {
+      args <- c("/S", "/Q", filestring)
+      output <- sys::exec_wait("rd", args = args, std_err = tmp1)
+    } else {
+      args <- c("-r", filestring)
+      output <- sys::exec_wait("rm", args = args, std_err = tmp1)
+    }
   }
 
   if (output == 0) {
