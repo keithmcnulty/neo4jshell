@@ -5,7 +5,8 @@
 #'
 #' @return Success or error message
 #'
-#' @examples neo4j_wipe(graph = "movies.db", data_path = path.expand("~/neo4j-community-3.5.8/data))
+#' @examples
+#' neo4j_wipe(graph = "movies.db", data_path = path.expand("~/neo4j-community-3.5.8/data"))
 
 neo4j_wipe <- function(graph = NULL, data_path = NULL) {
   if (substr(data_path, nchar(data_path), nchar(data_path)) != "/") {

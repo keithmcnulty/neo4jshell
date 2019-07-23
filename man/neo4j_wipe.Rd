@@ -17,3 +17,6 @@ Success or error message
 \description{
 Wipe a complete local graph database in Neo4J
 }
+\examples{
+neo4j_wipe(graph = "movies.db", data_path = path.expand("~/neo4j-community-3.5.8/data"))
+}
