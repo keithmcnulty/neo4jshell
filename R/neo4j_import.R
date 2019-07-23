@@ -9,6 +9,9 @@
 #' @param unzip_path Path to unzip on the local or remote server to be passed to the system command if necessary.
 #'
 #' @return System messages confirming success or error.  zip or tar files will be removed after import and decompression.
+#'
+#' @examples
+#' neo4j_import(local = TRUE, source = "mygraphdata.csv", import_dir = path.expand("~/neo4j-community-3.5.8/import"))
 
 
 neo4j_import <- function (local = FALSE, con = list(address = NULL, uid = NULL, pwd = NULL), source = NULL,

@@ -23,3 +23,8 @@ If multiple read queries were submitted, only the results of the final query wil
 \description{
 Execute a query string in Neo4J using cypher-shell and capture output
 }
+\examples{
+neo_local <-list(address = "bolt://localhost", uid = "neo4j", pwd = "neo4j")
+CQL <- "MATCH (n) RETURN count(n) AS total"
+neo4j_query(con = neo_local, qry = CQL)
+}

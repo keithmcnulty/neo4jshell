@@ -8,6 +8,11 @@
 #' @return A dataframe of results if the read query is successful.  A text string if an error is encountered.
 #' Write queries will return a zero length response if successful.
 #' If multiple read queries were submitted, only the results of the final query will be returned.
+#'
+#' @examples
+#' neo_local <-list(address = "bolt://localhost", uid = "neo4j", pwd = "neo4j")
+#' CQL <- "MATCH (n) RETURN count(n) AS total"
+#' neo4j_query(con = neo_local, qry = CQL)
 
 
 neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry = NULL,
