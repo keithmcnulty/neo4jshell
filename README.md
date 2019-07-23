@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/keithmcnulty/neo4jshell.svg?branch=master)](https://travis-ci.org/keithmcnulty/neo4jshell)
+<!-- badges: end -->
+
 # neo4jshell
 Efficient querying and server management for Neo4J in R using bolt and cypher-shell.  Requires cypher-shell to be available for querying.
 
