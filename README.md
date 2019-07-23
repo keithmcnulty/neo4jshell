@@ -140,4 +140,41 @@ fs::dir_ls(IMPORT_LOC)
 - `neo4j_wipe()` wipes an entire graph from a local Neo4J instance
 
 
+For Example:
 
+```
+options(stringsAsFactors = FALSE)
+
+# load the package
+library(neo4jshell)
+
+# setup relative to your server - for me, this is local
+graph = list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
+SHELL_LOC = path.expand("~/neo4j-community-3.5.8/bin/cypher-shell")
+IMPORT_LOC = path.expand("~/neo4j-community-3.5.8/import/")
+SERVER_LOC = path.expand("~/neo4j-community-3.5.8/bin/neo4j")
+DB_LOC = path.expand("~/neo4j-community-3.5.8/data/")
+
+# my server was already running, confirm
+neo4j_status(neo4j_path = SERVER_LOC)
+
+# stop the server
+neo4j_stop(SERVER_LOC)
+
+# restart to confirm that flow
+neo4j_start(SERVER_LOC)
+
+# I had a test node, that was returned
+neo4j_query(graph, qry="MATCH (n) RETURN count(n) as total", shell_path = SHELL_LOC)
+
+# stop the server and wipe the database
+# useful for rapid protoyping
+neo4j_stop(SERVER_LOC)
+neo4j_wipe(graph = "graph.db", data_path = DB_LOC)
+
+# fire up the server
+neo4j_start(SERVER_LOC)
+
+# confirm that there are no data - a clean database server!
+neo4j_query(graph, qry="MATCH (n) RETURN count(n) as total", shell_path = SHELL_LOC)
+```
