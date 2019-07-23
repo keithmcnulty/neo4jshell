@@ -28,9 +28,13 @@ neo4j_rmfiles <- function (local = TRUE, con = list(address = NULL, uid = NULL, 
 
   } else {
 
-    args <- files
-    output <- sys::exec_wait("rm", args = args, std_err = tmp1)
-
+    if (.Platform$OS.type == "windows") {
+      args <- c(files, "/Q")
+      output <- sys::exec_wait("del", args = args, std_err = tmp1)
+    } else {
+      args <- files
+      output <- sys::exec_wait("rm", args = args, std_err = tmp1)
+    }
   }
 
   if (output == 0) {

@@ -26,9 +26,13 @@ neo4j_rmdir <- function (local = FALSE, con = list(address = NULL, uid = NULL, p
 
   } else {
 
-    args <- c("-r", filestring)
-    output <- sys::exec_wait("rm", args = args, std_err = tmp1)
-
+    if (.Platform$OS.type == "windows") {
+      args <- c("/S", "/Q", filestring)
+      output <- sys::exec_wait("rd", args = args, std_err = tmp1)
+    } else {
+      args <- c("-r", filestring)
+      output <- sys::exec_wait("rm", args = args, std_err = tmp1)
+    }
   }
 
   if (output == 0) {
