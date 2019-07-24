@@ -15,6 +15,3 @@ System messages
 \description{
 Start a local Neo4J database
 }
-\examples{
-neo4j_start(neo4j_path = path.expand("~/neo4j-community-3.5.8/bin/neo4j"))
-}
