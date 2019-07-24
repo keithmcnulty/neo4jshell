@@ -29,6 +29,3 @@ System messages confirming success or error.  zip or tar files will be removed a
 \description{
 Imports a csv or a compressed file to Neo4J import folder.
 }
-\examples{
-neo4j_import(local = TRUE, source = "mygraphdata.csv", import_dir = path.expand("~/neo4j-community-3.5.8/import"))
-}

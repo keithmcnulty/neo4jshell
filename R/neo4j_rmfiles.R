@@ -6,9 +6,6 @@
 #' @param import_dir Character string of path to the Neo4J import directory.
 #'
 #' @return A success message if successful.  An error message otherwise.
-#'
-#' @examples
-#' neo4j_rmfiles(local = TRUE, files = "mygraphfile.csv", import_dir = path.expand("~/neo4j-community-3.5.8/import"))
 
 
 

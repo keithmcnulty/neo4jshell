@@ -6,9 +6,7 @@
 #' @param import_dir Character string of path to the Neo4J import directory.
 #'
 #' @return A success message if successful.  A error message otherwise.
-#'
-#' @examples
-#' neo4j_rmdir(local = TRUE, dir = "mygraphdata", import_dir = path.expand("~/neo4j-community-3.5.8/import"))
+
 
 
 neo4j_rmdir <- function (local = FALSE, con = list(address = NULL, uid = NULL, pwd = NULL), dir = NULL, import_dir = NULL) {
