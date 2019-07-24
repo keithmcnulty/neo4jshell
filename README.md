@@ -6,7 +6,7 @@
 Efficient querying and server management for Neo4J in R using bolt and cypher-shell.  Requires cypher-shell to be available for querying.
 
 ## Pre-installation notes
-This package requires uses the `ssh` package which requires `libssh` to be installed.  See [here](https://cran.r-project.org/web/packages/ssh/vignettes/intro.html) for installation details.
+This package requires uses the `ssh` package which requires `libssh` to be installed.  See [here](https://CRAN.R-project.org/package=ssh) for more details.
 
 
 ## Installation
