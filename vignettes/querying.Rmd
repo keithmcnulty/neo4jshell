@@ -1,0 +1,51 @@
+---
+title: "Querying Neo4J"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Querying Neo4J}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The function `neo4j_query()` can be used to send a query to a local or remote Neo4J server.  This function uses `cypher-shell` to send the query to Neo4J, and so the `cypher-shell` executable needs to be installed and available locally.  `neo4j_query()` takes the following arguments:
+
+* `con` should be a list containing three elements:  `address`, which should be the bolt address of the Neo4J server, and `uid` and `pwd` as login credentials
+* `qry` should be a character string representing the query to be sent to Neo4J
+* `shell_path` should be the full path to the `cypher-shell` executable.  The default value assumes that `cypher-shell` is already in the system path.  Use `path.expand()` if necessary.  
+
+Example, assuming a local Neo4J instance running the movies graph:
+
+```{r example, eval = FALSE}
+library(neo4jshell)
+
+neo4j_local <- list(address = "bolt://localhost", uid = "neo4juser", pwd = "neo4juser")
+CQL <- 'MATCH (p1:Person {name: "Kevin Bacon"})-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p2:Person)
+        RETURN p2.name AS Name, m.title AS Title'
+cypher_path <- path.expand("~/neo4j-community-3.5.8/bin/cypher-shell")
+neo4j_query(con = neo4j_local, qry = CQL, shell_path = cypher_path)
+
+```
+
+This query should return this dataframe:
+
+``` {r example-output, echo = FALSE}
+
+data.frame(Name = c("Ron Howard", "Rob Reiner", "Ron Howard"), 
+           Title = c("Frost/Nixon", "A Few Good Men", "Apollo 13"))
+
+```
+
+`neo4j_query()` accepts multiple query statements separated by `;`.  The function returns one of the following:
+
+* A dataframe of results if the query is a read query.  If there were multiple statements, only the results of the final statement will display.
+* A message indicating successful execution if the query is a write query.
+* An error message if an error occurred.  If there were multiple statements, the response for all statements will be displayed.
+
+

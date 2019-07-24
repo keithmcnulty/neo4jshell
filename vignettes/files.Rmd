@@ -1,0 +1,101 @@
+---
+title: "Importing and managing data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Importing and managing data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+The package provides three functions for importing and managing data with Neo4J.
+
+### Importing data
+
+The function `neo4j_import()` copies a `.csv`, `.zip` or `.tar.gz` file into the specified import directory on the Neo4J server.  If the file is compressed, it will automatically decompress the file into the import directory and remove the compressed file afterwards.
+
+`neo4j_import()` takes the following arguments:
+
+* `local` should be a logical value indicating if the Neo4J server is locally or remotely hosted.
+* `con` should be a list containing three elements:  `address`, which should be the bolt address of the Neo4J server, and `uid` and `pwd` as login credentials.  Only used if `local = FALSE`.
+* `source` is the local path to the file to be imported.  Use `path.expand()` if necessary.
+* `import_dir` is the local or remote path to the Neo4J import directory. Use `path.expand()` if necessary.
+* `unzip_path` is the path to the `unzip` executable on the local or remote server.  Only used if `zip` is imported.
+* `gunzip_path` is the path to the `gunzip` executable on the local or remote server. Only used if `.tar.gz` is imported.
+* `tar_path` is the path to the `tar` executable on the local or remote server.  Only used if `.tar.gz` is imported.
+
+Example, importing a file named `data.csv` to a locally hosted Neo4J server:
+
+``` {r, eval = FALSE}
+library(neo4jshell)
+
+file  <- "data.csv" # assumes file is present in current working directory
+impdir <- path.expand("~/neo4j-community-3.5.8/import")
+neo4j_import(local = TRUE, source = file, import_dir = impdir)
+
+```
+
+The function returns either a success message or an error message.
+
+### Removing files from the import directory
+
+The function `neo4j_rmfiles()` allows the removal of files from the specified Neo4J import directory, which can be useful for cleaning up following import. 
+
+`neo4j_rmfiles()` takes the following arguments:
+
+* `local` should be a logical value indicating if the Neo4J server is locally or remotely hosted.
+* `con` should be a list containing three elements:  `address`, which should be the bolt address of the Neo4J server, and `uid` and `pwd` as login credentials.  Only used if `local = FALSE`.
+* `source` is a character vector listing the names of the files to be removed from the import directory.  
+* `import_dir` is the local or remote path to the Neo4J import directory. Use `path.expand()` if necessary.
+
+Example, removing a file named `data.csv` from a locally hosted Neo4J server:
+
+``` {r, eval = FALSE}
+library(neo4jshell)
+
+file  <- "data.csv" 
+impdir <- path.expand("~/neo4j-community-3.5.8/import")
+neo4j_rmfiles(local = TRUE, files = file, import_dir = impdir)
+
+```
+
+The function returns either a success message or an error message.
+
+### Removing subdirectories from the import directory
+
+The function `neo4j_rmdir()` allows the removal of an entire subdirectory and all its contents from the specified Neo4J import directory, which can be useful for cleaning up following import. 
+
+`neo4j_rmdir()` takes the following arguments:
+
+* `local` should be a logical value indicating if the Neo4J server is locally or remotely hosted.
+* `con` should be a list containing three elements:  `address`, which should be the bolt address of the Neo4J server, and `uid` and `pwd` as login credentials.  Only used if `local = FALSE`.
+* `dir` is the name of the subdirectory of the import directory to be removed.  
+* `import_dir` is the local or remote path to the Neo4J import directory. Use `path.expand()` if necessary.
+
+Example, removing a directory called `data` from a locally hosted Neo4J server:
+
+``` {r, eval = FALSE}
+library(neo4jshell)
+
+datadir  <- "data" 
+impdir <- path.expand("~/neo4j-community-3.5.8/import")
+neo4j_rmdir(local = TRUE, dir = datadir, import_dir = impdir)
+
+```
+
+The function returns either a success message or an error message.
+
+### Smooth ETL in Neo4J
+
+These functions can be used in combination with `neo4j_query()` to set up smooth ETL on a Neo4J server, by executing in the following order:
+
+1. `neo4j_import()` to transfer a data file into the import directory or into a subdirectory (if the compressed file involves a subdirectory).
+2. `neo4j_query()` to execute a load query referencing the imported file.
+3. `neo4j_rmfiles()` or `neo4j_rmdir()` to remove the imported files following a successful load query.
+

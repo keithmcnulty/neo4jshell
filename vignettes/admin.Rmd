@@ -1,0 +1,46 @@
+---
+title: "Server Admin"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Server Admin}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This package contains functions for administering a local Neo4J server.
+
+### Start, stop, restart or check the status of a local Neo4J server
+
+`neo4J_start()`, `neo4j_stop()`, `neo4j_restart()` and `neo4j_status()` perform a stop, start, restart or reports the current status of a local Neo4J instance.  These functions take a single argument `neo4j_path` which should be a path to the local `neo4j` executable.  Use `path.expand()` where necessary.
+
+```{r example, eval = FALSE}
+library(neo4jshell)
+
+neo_path <- path.expand("~/neo4j-community-3.5.8/bin/neo4j")
+neo4j_status(neo_path)
+```
+
+All these functions output system messages.
+
+### Wipe a specified graph from a local Neo4J server
+
+`neo4j_wipe()` completely removes a graph from the local Neo4J server.  It takes two arguments:
+
+* `graph` is the name of the graph file to be wiped.
+* `data_path` is the path to the data directory of the local Neo4J server.  Use `path.expand()` if necessary.
+
+``` {r example2, eval = FALSE}
+graphfile <- "graph.db"
+my_data_path <- path.expand("~/neo4j-community-3.5.8/data")
+neo4j_wipe(graphfile, my_data_path)
+
+```
+
+This function will output a success or an error message.
