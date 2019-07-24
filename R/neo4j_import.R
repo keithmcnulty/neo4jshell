@@ -67,7 +67,7 @@ neo4j_import <- function (local = FALSE, con = list(address = NULL, uid = NULL, 
       if (substr(source, nchar(source) - 3, nchar(source)) == ".csv") {
         if (.Platform$OS.type == "windows") {
           args <- c(source, import_dir, "/Y")
-          output <- sys::exec_wait("copy", args = args, std_err = tmp1)
+          output <- sys::exec_wait("xcopy", args = args, std_err = tmp1)
         } else {
           args <- c(source, import_dir)
           output <- sys::exec_wait("cp", args = args, std_err = tmp1)
@@ -80,7 +80,7 @@ neo4j_import <- function (local = FALSE, con = list(address = NULL, uid = NULL, 
       } else if (substr(source, nchar(source) - 3, nchar(source)) == ".zip") {
         if (.Platform$OS.type == "windows") {
           args <- c(source, import_dir, "/Y")
-          output1 <- sys::exec_wait("copy", args = args, std_err = tmp1)
+          output1 <- sys::exec_wait("xcopy", args = args, std_err = tmp1)
         } else {
           args <- c(source, import_dir)
           output <- sys::exec_wait("cp", args = args, std_err = tmp1)
@@ -102,7 +102,7 @@ neo4j_import <- function (local = FALSE, con = list(address = NULL, uid = NULL, 
       } else if (substr(source, nchar(source) - 6, nchar(source)) == ".tar.gz") {
         if (.Platform$OS.type == "windows") {
           args <- c(source, import_dir, "/Y")
-          output1 <- sys::exec_wait("copy", args = args, std_err = tmp1)
+          output1 <- sys::exec_wait("xcopy", args = args, std_err = tmp1)
         } else {
           args <- c(source, import_dir)
           output1 <- sys::exec_wait("cp", args = args, std_err = tmp1)
