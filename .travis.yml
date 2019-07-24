@@ -6,4 +6,4 @@ cache: packages
 addons:
   apt:
     packages:
-      - libssh
+      - libssh-dev
