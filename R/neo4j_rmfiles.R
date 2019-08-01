@@ -21,7 +21,12 @@ neo4j_rmfiles <- function (local = TRUE, con = list(address = NULL, uid = NULL, 
 
   if (!local) {
 
-    ssh_uid <- paste0(con$uid, "@", basename(con$address))
+    base_address <- basename(con$address)
+    if (grepl(":", base_address)) {
+      base_address <- gsub(":(.*)", "", base_address)
+    }
+
+    ssh_uid <- paste0(con$uid, "@", base_address)
     session <- ssh::ssh_connect(ssh_uid, passwd = con$pwd)
     output <- ssh::ssh_exec_wait(session, command = paste("rm", filestring), std_err = tmp1)
     ssh::ssh_disconnect(session)

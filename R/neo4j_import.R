@@ -28,7 +28,12 @@ neo4j_import <- function (local = FALSE, con = list(address = NULL, uid = NULL, 
 
   if (!local) {
 
-    ssh_uid <- paste0(con$uid, "@", basename(con$address))
+    base_address <- basename(con$address)
+    if (grepl(":", base_address)) {
+      base_address <- gsub(":(.*)", "", base_address)
+    }
+
+    ssh_uid <- paste0(con$uid, "@", base_address)
 
     if (substr(source, nchar(source) - 3, nchar(source)) == ".csv") {
       session <- ssh::ssh_connect(ssh_uid, passwd = con$pwd)
