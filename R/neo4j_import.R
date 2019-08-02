@@ -1,7 +1,8 @@
 #' Imports a csv or a compressed file to Neo4J import folder.
 #'
 #' @param local Logical indicating whether import is to a locally hosted or a remotely hosted server.
-#' @param con If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
+#' @param con If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server.
+#'   uid and pwd must be for an account on the server with appropriate permissions.
 #' @param source Character string of local path to the csv, zip or tar.gz compressed csv file to be imported
 #' @param import_dir Character string of full path to the Neo4J import directory
 #' @param gunzip_path Path to gunzip on the local or remote server to be passed to the system command following import if necessary.

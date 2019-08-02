@@ -11,7 +11,8 @@ neo4j_import(local = FALSE, con = list(address = NULL, uid = NULL, pwd
 \arguments{
 \item{local}{Logical indicating whether import is to a locally hosted or a remotely hosted server.}
 
-\item{con}{If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}
+\item{con}{If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server.
+uid and pwd must be for an account on the server with appropriate permissions.}
 
 \item{source}{Character string of local path to the csv, zip or tar.gz compressed csv file to be imported}
 
