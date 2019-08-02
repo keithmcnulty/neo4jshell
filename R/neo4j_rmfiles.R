@@ -19,7 +19,7 @@ neo4j_rmfiles <- function (local = FALSE, con = list(address = NULL, uid = NULL,
   filestring <- paste(files, collapse = " ")
   tmp1 <- tempfile()
 
-  if (!local) {
+  if (local == FALSE) {
 
     base_address <- basename(con$address)
     if (grepl(":", base_address)) {
