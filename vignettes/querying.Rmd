@@ -14,7 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-The function `neo4j_query()` can be used to send a query to a local or remote Neo4J server.  This function uses `cypher-shell` to send the query to Neo4J, and so the `cypher-shell` executable needs to be installed and available locally.  `neo4j_query()` takes the following arguments:
+The function `neo4j_query()` can be used to send a query to a local or remote Neo4J server.  This function uses `cypher-shell` to send the query to Neo4J, and so the `cypher-shell` executable needs to be installed and available locally.  See the `README` file for further information on configuration of the `cypher-shell` executable.  
+
+`neo4j_query()` takes the following arguments:
 
 * `con` should be a list containing three elements:  `address`, which should be the bolt address of the Neo4J server, and `uid` and `pwd` as login credentials
 * `qry` should be a character string representing the query to be sent to Neo4J

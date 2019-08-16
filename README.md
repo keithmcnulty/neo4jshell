@@ -4,11 +4,14 @@
 <!-- badges: end -->
 
 # neo4jshell
-Efficient querying and server management for Neo4J in R using bolt and cypher-shell.  Requires cypher-shell to be available for querying.
+Efficient querying and server management for Neo4J in R using bolt and cypher-shell.  
 
 ## Pre-installation notes
 This package requires uses the `ssh` package which requires `libssh` to be installed.  See [here](https://CRAN.R-project.org/package=ssh) for more details.
 
+This package also requires the `cypher-shell` executable to be available **locally**.  This is installed as standard in Neo4J installations and can usually be found in the `bin` directory of that installation.  It can also be installed standalone using Homebrew or is available here:  https://github.com/neo4j/cypher-shell.
+
+It is recommended, for ease of use, that the path to the cypher-shell executable is added to your `PATH` environment variable.  If not, you should record its location for use in some of the functions within this package.
 
 ## Installation
 
