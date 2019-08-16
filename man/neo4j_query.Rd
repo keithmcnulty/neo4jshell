@@ -12,8 +12,7 @@ neo4j_query(con = list(address = NULL, uid = NULL, pwd = NULL),
 
 \item{qry}{Character string of the query or queries to be sent to Neo4J.  Read queries should be single queries.}
 
-\item{shell_path}{If cypher-shell is not in the PATH system variable, the full local path to cypher-shell executable
-(eg `path.expand('~/neo4j-community-3.5.8/bin/cypher-shell')`).}
+\item{shell_path}{If cypher-shell is not in the PATH system variable, the full local path to cypher-shell executable.}
 }
 \value{
 A dataframe of results if the read query is successful.  A text string if an error is encountered.
