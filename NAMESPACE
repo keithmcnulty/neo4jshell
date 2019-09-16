@@ -1,3 +1,2 @@
 exportPattern("^[[:alpha:]]+")
-importFrom("utils", "read.csv")
 importFrom("magrittr", "%>%")

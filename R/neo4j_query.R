@@ -80,9 +80,9 @@ neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry 
       tmp <- gsub("(?:\\G(?!^)|\\[)[^][,]*\\K,(?=[^][]*])", ";;;", tmp, perl = TRUE) # deal with embedded [] lists for read.csv
       tmp <- gsub("(?:\\G(?!^)|\\{)[^{},]*\\K,(?=[^{}]*})", ";;;", tmp, perl = TRUE) # deal with embedded {} lists for read.csv
       write(tmp, tmp_final)
-      r <- read.csv(tmp_final, stringsAsFactors = FALSE)
+      r <- suppressMessages(readr::read_csv(tmp_final))
       r <- sapply(r, function (x) gsub(";;;", ",", x))
-      as.data.frame(r)
+      as.data.frame(r, stringsAsFactors = FALSE)
     } else {
       message("Query succeeded with a zero length response from Neo4J")
     }

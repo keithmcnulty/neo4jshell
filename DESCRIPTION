@@ -11,6 +11,7 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     magrittr,
+    readr,
     ssh,
     sys
 RoxygenNote: 6.1.1
