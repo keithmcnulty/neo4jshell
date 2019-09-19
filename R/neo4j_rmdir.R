@@ -10,7 +10,7 @@
 
 
 
-neo4j_rmdir <- function (local = FALSE, con = list(address = NULL, uid = NULL, pwd = NULL), dir = NULL, import_dir = NULL) {
+neo4j_rmdir <- function (local = FALSE, con = list(address = NULL, uid = NULL, pwd = NULL), dir = NULL, import_dir = "import") {
 
   if (substr(import_dir, nchar(import_dir), nchar(import_dir)) != "/") {
     import_dir <- paste0(import_dir, "/")

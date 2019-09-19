@@ -14,7 +14,7 @@
 
 
 neo4j_import <- function (local = FALSE, con = list(address = NULL, uid = NULL, pwd = NULL), source = NULL,
-                          import_dir = NULL, unzip_path = "unzip",
+                          import_dir = "import", unzip_path = "unzip",
                           gunzip_path = "gunzip", tar_path = "tar") {
 
 
