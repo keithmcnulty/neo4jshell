@@ -5,8 +5,8 @@
 \title{Imports a csv or a compressed file to Neo4J import folder.}
 \usage{
 neo4j_import(local = FALSE, con = list(address = NULL, uid = NULL, pwd
-  = NULL), source = NULL, import_dir = NULL, unzip_path = "unzip",
-  gunzip_path = "gunzip", tar_path = "tar")
+  = NULL), source = NULL, import_dir = "import",
+  unzip_path = "unzip", gunzip_path = "gunzip", tar_path = "tar")
 }
 \arguments{
 \item{local}{Logical indicating whether import is to a locally hosted or a remotely hosted server.}
