@@ -1,5 +1,4 @@
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/keithmcnulty/neo4jshell.svg?branch=master)](https://travis-ci.org/keithmcnulty/neo4jshell)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build status](https://github.com/keithmcnulty/neo4jshell/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/neo4jshell/actions)
 <!-- badges: end -->

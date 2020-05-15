@@ -4,8 +4,11 @@
 \alias{neo4j_query}
 \title{Execute a query string in Neo4J using cypher-shell and capture output}
 \usage{
-neo4j_query(con = list(address = NULL, uid = NULL, pwd = NULL),
-  qry = NULL, shell_path = "cypher-shell")
+neo4j_query(
+  con = list(address = NULL, uid = NULL, pwd = NULL),
+  qry = NULL,
+  shell_path = "cypher-shell"
+)
 }
 \arguments{
 \item{con}{List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server}

@@ -4,8 +4,12 @@
 \alias{neo4j_rmfiles}
 \title{Remove files from the Neo4J import directory}
 \usage{
-neo4j_rmfiles(local = FALSE, con = list(address = NULL, uid = NULL, pwd
-  = NULL), files = NULL, import_dir = "import")
+neo4j_rmfiles(
+  local = FALSE,
+  con = list(address = NULL, uid = NULL, pwd = NULL),
+  files = NULL,
+  import_dir = "import"
+)
 }
 \arguments{
 \item{local}{Logical indicating whether import is to a locally hosted or remotely hosted server.}

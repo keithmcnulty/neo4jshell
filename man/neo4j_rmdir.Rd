@@ -4,8 +4,12 @@
 \alias{neo4j_rmdir}
 \title{Remove subdirectory and all its contents from the Neo4J import directory}
 \usage{
-neo4j_rmdir(local = FALSE, con = list(address = NULL, uid = NULL, pwd =
-  NULL), dir = NULL, import_dir = "import")
+neo4j_rmdir(
+  local = FALSE,
+  con = list(address = NULL, uid = NULL, pwd = NULL),
+  dir = NULL,
+  import_dir = "import"
+)
 }
 \arguments{
 \item{local}{Logical indicating whether import is to a locally hosted or remotely hosted server.}
