@@ -4,14 +4,14 @@
 <!-- badges: end -->
 
 # neo4jshell
-Efficient querying and server management for Neo4J in R using bolt and cypher-shell.  
+Efficient querying and server management for 'Neo4J' in R using bolt and cypher-shell.  
 
 ## Pre-installation notes
-This package requires uses the `ssh` package which requires `libssh` to be installed.  See [here](https://cran.r-project.org/web/packages/ssh/vignettes/intro.html) for more details.
+This package requires uses the `ssh` package which requires `libssh` to be installed.  See the vignettes for the `ssh` package [here](https://CRAN.R-project.org/package=ssh) for more details.
 
-This package also requires the `cypher-shell` executable to be available **locally**.  This is installed as standard in Neo4J installations and can usually be found in the `bin` directory of that installation.  It can also be installed standalone using Homebrew or is available here:  https://github.com/neo4j/cypher-shell.
+This package also requires the `cypher-shell` executable to be available **locally**.  This is installed as standard in 'Neo4J' installations and can usually be found in the `bin` directory of that installation.  It can also be installed standalone using Homebrew or is available here:  https://github.com/neo4j/cypher-shell.
 
-It is recommended, for ease of use, that the path to the cypher-shell executable is added to your `PATH` environment variable.  If not, you should record its location for use in some of the functions within this package.
+It is recommended, for ease of use, that the path to the `cypher-shell` executable is added to your `PATH` environment variable.  If not, you should record its location for use in some of the functions within this package.
 
 ## Installation
 
@@ -23,9 +23,9 @@ devtools::install_github("keithmcnulty/neo4jshell")
 
 ### Query
 
-- `neo4j_query()` sends queries to the specified Neo4J graph database and, where appropriate, retrieves the results in a dataframe.
+- `neo4j_query()` sends queries to the specified 'Neo4J' graph database and, where appropriate, retrieves the results in a dataframe.
 
-In this example, the movies dataset has been started locally in the Neo4J browser, with a user created that has the credentials indicated.   cypher-shell is in the local system path. 
+In this example, the movies dataset has been started locally in the 'Neo4J' browser, with a user created that has the credentials indicated.   `cypher-shell` is in the local system path. 
 ```
 # set credentials (no port required in bolt address)
 neo_movies <- list(address = "bolt://localhost", uid = "neo4juser", pwd = "neo4juser")
@@ -48,31 +48,31 @@ neo4jshell::neo4j_query(con = neo_movies, qry = CQL)
 
 ### Server management
 
-- `neo4j_import()` imports a csv, zip or tar.gz file from a local source into the specified Neo4J import directory, uncompresses compressed files and removes the original compressed file as clean up.
-- `neo4j_rmfiles()` removes specified files from specified Neo4J import directory
-- `neo4j_rmdir()` removes entire specified subdirectories from specified Neo4J import directory
+- `neo4j_import()` imports a csv, zip or tar.gz file from a local source into the specified 'Neo4J' import directory, uncompresses compressed files and removes the original compressed file as clean up.
+- `neo4j_rmfiles()` removes specified files from specified 'Neo4J' import directory
+- `neo4j_rmdir()` removes entire specified subdirectories from specified 'Neo4J' import directory
 
 ### Remote development
 
-In this general example, we can see how these functions can be used for smooth ETL to a remote Neo4J server.  
+In this general example, we can see how these functions can be used for smooth ETL to a remote 'Neo4J' server.  
 
 ```
 # credentials (note no port required in server address)
 neo_server <- list(address = "bolt://neo.server.address", uid = "neo4j", pwd = "password")
 
-# csv data file to be loaded onto Neo4J server (path relative to current working directory)
+# csv data file to be loaded onto 'Neo4J' server (path relative to current working directory)
 datafile <- "data.csv"
 
-# CQL query to write data from datafile to Neo4J
+# CQL query to write data from datafile to 'Neo4J'
 loadcsv_CQL <- "LOAD CSV FROM 'file:///data.csv' etc etc"
 
-# path to import directory on remote Neo4J server (should be relative to neo4j user home directory on remote server)
+# path to import directory on remote 'Neo4J' server (should be relative to user home directory on remote server)
 impdir <- "./import"
 
 # import data
 neo4jshell::neo4j_import(con = neo_server, source = datafile, import_dir = impdir)
 
-# write data to Neo4J (assumes cypher-shell is in system PATH variable)
+# write data to 'Neo4J' (assumes cypher-shell is in system PATH variable)
 neo4jshell:neo4j_query(con = neo_server, qry = loadcsv_CQL)
 
 # remove data file as clean-up
@@ -83,9 +83,9 @@ neo4jshell::neo4j_rmfiles(con = neo_server, files = datafile, import_dir = impdi
 
 ### Local Development
 
-If you are working with the `neo4j` server locally, below will help you get started.  
+If you are working with the 'Neo4J' server locally, below will help you get started.  
 
-First, the code below is relative to user and is using neo4j 3.5.8 community installed at my user's root.
+First, the code below is relative to user and is using 'Neo4J 3.5.8 Community' installed at my user's root.
 
 ```
 ## graph setup
@@ -125,7 +125,7 @@ Now, let's remove that file from the import directory of our local server
 neo4j_rmfiles(local = TRUE, graph, files="test-df.csv", import_dir = IMPORT_LOC)
 ```
 
-Lastly, if you want to use a subdiretory to help manage your files during an ETL into `neo4j`, you can remove that local subdirectory when your process has completed.
+Lastly, if you want to use a subdiretory to help manage your files during an ETL into 'Neo4J', you can remove that local subdirectory when your process has completed.
 
 Below walks through the steps to confirm this feature.
 
@@ -145,11 +145,11 @@ fs::dir_ls(IMPORT_LOC)
 
 ### Local server administration and control
 
-- `neo4j_start()` starts a local Neo4J instance
-- `neo4j_stop()` stops a local Neo4J instance
-- `neo4j_restart()` restarts a local Neo4J instance
-- `neo4j_status()` returns the status of a local Neo4J instance
-- `neo4j_wipe()` wipes an entire graph from a local Neo4J instance
+- `neo4j_start()` starts a local 'Neo4J' instance
+- `neo4j_stop()` stops a local 'Neo4J' instance
+- `neo4j_restart()` restarts a local 'Neo4J' instance
+- `neo4j_status()` returns the status of a local 'Neo4J' instance
+- `neo4j_wipe()` wipes an entire graph from a local 'Neo4J' instance
 
 
 For Example:
