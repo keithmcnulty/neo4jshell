@@ -1,6 +1,8 @@
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build status](https://github.com/keithmcnulty/neo4jshell/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/neo4jshell/actions)
+[![Travis build status](https://travis-ci.com/keithmcnulty/neo4jshell.svg?branch=master)](https://travis-ci.com/keithmcnulty/neo4jshell)
+[![Codecov test coverage](https://codecov.io/gh/keithmcnulty/neo4jshell/branch/master/graph/badge.svg)](https://codecov.io/gh/keithmcnulty/neo4jshell?branch=master)
 <!-- badges: end -->
 
 # neo4jshell
