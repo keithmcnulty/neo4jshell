@@ -5,7 +5,7 @@
 \title{Imports a csv or a compressed file to Neo4J import folder.}
 \usage{
 neo4j_import(
-  local = FALSE,
+  local = F,
   con = list(address = NULL, uid = NULL, pwd = NULL),
   source = NULL,
   import_dir = "import",

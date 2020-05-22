@@ -5,7 +5,7 @@
 \title{Remove files from the Neo4J import directory}
 \usage{
 neo4j_rmfiles(
-  local = FALSE,
+  local = F,
   con = list(address = NULL, uid = NULL, pwd = NULL),
   files = NULL,
   import_dir = "import"

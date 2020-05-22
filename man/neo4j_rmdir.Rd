@@ -5,7 +5,7 @@
 \title{Remove subdirectory and all its contents from the Neo4J import directory}
 \usage{
 neo4j_rmdir(
-  local = FALSE,
+  local = F,
   con = list(address = NULL, uid = NULL, pwd = NULL),
   dir = NULL,
   import_dir = "import"
