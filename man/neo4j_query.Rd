@@ -32,12 +32,14 @@ If multiple read queries were submitted, only the results of the final query wil
 Execute a query string in Neo4J using cypher-shell and capture output
 }
 \examples{
-\donttest{
+\dontrun{
 # query remote Neo4J server, with cypher-shell in local system PATH variable
 con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
 qry <- "MATCH (n) RETURN (n)"
 neo4j_query(con, qry)
+}
 
+\dontrun{
 # query local Neo4J Community 3.5.8 server, with cypher-shell not in local system PATH variable
 graph <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
 SHELL_LOC <- path.expand("~/neo4j-community-3.5.8/bin/cypher-shell")

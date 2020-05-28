@@ -28,7 +28,7 @@ A success message if successful.  An error message otherwise.
 Remove files from the Neo4J import directory
 }
 \examples{
-\donttest{
+\dontrun{
 # remove file from remote Neo4J import directory
 con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
 datafile <- "data.csv"
@@ -36,7 +36,7 @@ impdir <- "./import"
 neo4j_rmfiles(con = con, files = datafile, import_dir = impdir)
 }
 
-\donttest{
+\dontrun{
 # remove file from local Neo4J Community 3.5.8 import directory
 con <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
 datafile <- "data.csv"

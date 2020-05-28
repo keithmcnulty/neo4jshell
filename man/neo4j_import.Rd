@@ -34,7 +34,7 @@ uid and pwd must be for an account on the server with appropriate permissions.}
 System messages confirming success or error.  zip or tar files will be removed after import and decompression.
 
 #' @examples
-\donttest{
+\dontrun{
 # import csv to remote Neo4J server, specifying the path to the import directory relative to the user
 con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
 datafile <- "data.csv"
@@ -42,7 +42,7 @@ impdir <- "./import"
 neo4j_import(con, source = datafile, import_dir = impdir)
 }
 
-\donttest{
+\dontrun{
 # import zip to local Neo4J Community 3.5.8 server, with zip in the local system PATH variable
 con <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
 datafile <- "data.zip"

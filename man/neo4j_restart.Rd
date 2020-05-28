@@ -16,7 +16,7 @@ System messages
 Restart a local Neo4J database
 }
 \examples{
-\donttest{
+\dontrun{
 # restart local graph with neo4j executable in the system PATH variable
 neo4j_restart()
 }

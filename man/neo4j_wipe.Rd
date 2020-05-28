@@ -18,7 +18,7 @@ Success or error message
 Wipe a complete local graph database in Neo4J
 }
 \examples{
-\donttest{
+\dontrun{
 # wipe movies database from local Neo4J Community 3.5.8 installation
 DB_LOC <- path.expand("~/neo4j-community-3.5.8/data/")
 neo4j_wipe(database = "movies", data_path = DB_LOC)
