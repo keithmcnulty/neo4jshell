@@ -9,7 +9,7 @@ neo4j_query(
   qry = NULL,
   shell_path = "cypher-shell",
   database = NULL,
-  encryption = T
+  encryption = c("default", "true", "false")
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ neo4j_query(
 
 \item{database}{The name of the database if working in a multi-tenency instance of Neo4J.}
 
-\item{encryption}{Toggle encryption or off.}
+\item{encryption}{Passes encryption argument to cypher-shell if necessary.}
 }
 \value{
 A dataframe of results if the read query is successful.  A text string if an error is encountered.
