@@ -3,6 +3,12 @@
 #' @param neo4j_path Path to the Neo4J executable (usually in the bin directory of the Neo4J installation)
 #'
 #' @return System messages
+#'
+#' @examples
+#' \dontrun{
+#' # restart local graph with neo4j executable in the system PATH variable
+#' neo4j_restart()
+#' }
 
 
 neo4j_restart <- function(neo4j_path = "neo4j") {

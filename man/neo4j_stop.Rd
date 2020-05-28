@@ -15,3 +15,9 @@ System messages
 \description{
 Stop a local Neo4J database
 }
+\examples{
+\dontrun{
+# stop local graph with neo4j executable in the system PATH variable
+neo4j_stop()
+}
+}

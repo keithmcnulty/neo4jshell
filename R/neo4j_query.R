@@ -3,15 +3,33 @@
 #' @param con List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
 #' @param qry Character string of the query or queries to be sent to Neo4J.  Read queries should be single queries.
 #' @param shell_path If cypher-shell is not in the PATH system variable, the full local path to cypher-shell executable.
+#' @param database The name of the database if working in a multi-tenency instance of Neo4J.
+#' @param encryption Toggle encryption or off.
 #'
 #' @return A dataframe of results if the read query is successful.  A text string if an error is encountered.
 #' Write queries will return a zero length response if successful.
 #' If multiple read queries were submitted, only the results of the final query will be returned.
+#'
+#' @examples
+#' \dontrun{
+#' # query remote Neo4J server, with cypher-shell in local system PATH variable
+#' con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
+#' qry <- "MATCH (n) RETURN (n)"
+#' neo4j_query(con, qry)
+#' }
+#'
+#' \dontrun{
+#' # query local Neo4J Community 3.5.8 server, with cypher-shell not in local system PATH variable
+#' graph <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
+#' SHELL_LOC <- path.expand("~/neo4j-community-3.5.8/bin/cypher-shell")
+#' qry <- "MATCH (n) RETURN (n)"
+#' neo4j_query(con, qry, shell_path = SHELL_LOC)
+#' }
 
 
 
 neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry = NULL,
-                        shell_path = "cypher-shell") {
+                        shell_path = "cypher-shell", database = NULL, encryption = T) {
 
   qry <- gsub("\n", " ", qry)
   qry <- gsub("\t", "", qry)
@@ -35,14 +53,50 @@ neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry 
   # execute queries
 
   for (i in 1:length(qry)) {
+    if (!encryption) {
+      if (!is.null(database)) {
+        assign(paste0("args_", i),
+               c("-a", con$address,
+                 "-u", con$uid,
+                 "-p", con$pwd,
+                 "-d", database,
+                 "--encryption", "false",
+                 qry[i]) %>%
+                 noquote()
+        )
+      } else {
+        assign(paste0("args_", i),
+               c("-a", con$address,
+                 "-u", con$uid,
+                 "-p", con$pwd,
+                 "--encryption", "false",
+                 qry[i]) %>%
+                 noquote()
+        )
+      }
+    } else {
+      if (!is.null(database)) {
+        assign(paste0("args_", i),
+               c("-a", con$address,
+                 "-u", con$uid,
+                 "-p", con$pwd,
+                 "-d", database,
+                 "--encryption", "true",
+                 qry[i]) %>%
+                 noquote()
+        )
+      } else {
+        assign(paste0("args_", i),
+               c("-a", con$address,
+                 "-u", con$uid,
+                 "-p", con$pwd,
+                 "--encryption", "true",
+                 qry[i]) %>%
+                 noquote()
+        )
+      }
+    }
 
-    assign(paste0("args_", i),
-           c("-a", con$address,
-           "-u", con$uid,
-           "-p", con$pwd,
-           qry[i]) %>%
-            noquote()
-    )
 
     assign(paste0("tmp1_", i), tempfile())
     assign(paste0("tmp2_", i), tempfile())

@@ -15,3 +15,9 @@ System messages
 \description{
 Start a local Neo4J database
 }
+\examples{
+\dontrun{
+# start local graph on with neo4j executable in the system PATH variable
+neo4j_start()
+}
+}

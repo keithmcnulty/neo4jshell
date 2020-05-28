@@ -183,7 +183,7 @@ neo4j_query(graph, qry="MATCH (n) RETURN count(n) as total", shell_path = SHELL_
 # stop the server and wipe the database
 # useful for rapid protoyping
 neo4j_stop(SERVER_LOC)
-neo4j_wipe(graph = "graph.db", data_path = DB_LOC)
+neo4j_wipe(database = "graph.db", data_path = DB_LOC)
 
 # fire up the server
 neo4j_start(SERVER_LOC)
