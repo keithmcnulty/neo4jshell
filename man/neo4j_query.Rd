@@ -21,7 +21,7 @@ neo4j_query(
 
 \item{database}{The name of the database if working in a multi-tenency instance of Neo4J.}
 
-\item{encryption}{Passes encryption argument to cypher-shell if necessary.}
+\item{encryption}{Passes encryption argument to cypher-shell if necessary.  Older versions of cypher-shell may require 'true' or 'false' to be passed.}
 }
 \value{
 A dataframe of results if the read query is successful.  A text string if an error is encountered.
