@@ -15,3 +15,9 @@ System messages
 \description{
 Check status of a local Neo4J database
 }
+\examples{
+\donttest{
+# Check status local graph with neo4j executable in the system PATH variable
+neo4j_status()
+}
+}

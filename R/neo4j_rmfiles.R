@@ -7,6 +7,23 @@
 #' @param import_dir Character string of path to the Neo4J import directory.
 #'
 #' @return A success message if successful.  An error message otherwise.
+#'
+#' @examples
+#' \donttest{
+#' # remove file from remote Neo4J import directory
+#' con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
+#' datafile <- "data.csv"
+#' impdir <- "./import"
+#' neo4j_rmfiles(con = con, files = datafile, import_dir = impdir)
+#' }
+#'
+#' \donttest{
+#' # remove file from local Neo4J Community 3.5.8 import directory
+#' con <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
+#' datafile <- "data.csv"
+#' impdir <- path.expand("~/neo4j-community-3.5.8/import/")
+#' neo4j_rmfiles(local = T, con = con, files = datafile, import_dir = impdir)
+#' }
 
 
 

@@ -33,7 +33,7 @@ All these functions output system messages.
 
 `neo4j_wipe()` completely removes a graph from the local Neo4J server.  It takes two arguments:
 
-* `graph` is the name of the graph file to be wiped.
+* `database` is the name of the graph database file to be wiped.
 * `data_path` is the path to the data directory of the local Neo4J server.  Use `path.expand()` if necessary.
 
 ``` {r example2, eval = FALSE}

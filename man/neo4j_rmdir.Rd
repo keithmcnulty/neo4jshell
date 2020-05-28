@@ -27,3 +27,20 @@ A success message if successful.  A error message otherwise.
 \description{
 Remove subdirectory and all its contents from the Neo4J import directory
 }
+\examples{
+\donttest{
+# remove a subdirectory and all its contents from the remote Neo4J import directory
+con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
+my_dir <- "my_data"
+impdir <-"./import"
+neo4j_rmdir(con = con, dir = my_dir, import_dir = impdir)
+}
+
+\donttest{
+# remove a subdirectory and all its contents from the local Neo4J Community 3.5.8 import directory
+con <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
+my_dir <- "my_data"
+impdir <- path.expand("~/neo4j-community-3.5.8/import/")
+neo4j_rmdir(local = T, con = con, dir = my_dir, import_dir = impdir)
+}
+}
