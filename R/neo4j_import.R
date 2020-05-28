@@ -11,7 +11,7 @@
 #'
 #' @return System messages confirming success or error.  zip or tar files will be removed after import and decompression.
 #'
-#' #' @examples
+#' @examples
 #' \dontrun{
 #' # import csv to remote Neo4J server, specifying the path to the import directory relative to the user
 #' con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
