@@ -55,7 +55,7 @@ neo4jshell::neo4j_query(con = neo_movies, qry = CQL)
 
 ### Remote development
 
-In this general example, we can see how these functions can be used for smooth ETL to a remote 'Neo4J' server.  
+In this general example, we can see how these functions can be used for smooth ETL to a remote 'Neo4J' server.  This example assumes that the URL of the server that hosts the 'Neo4J' database is the same as the bolt URL for the 'Neo4J' database.  If not, a different set of credentials will be needed for using `neo4j_import()`.
 
 ```
 # credentials (note no port required in server address)
