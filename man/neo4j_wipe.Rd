@@ -7,7 +7,7 @@
 neo4j_wipe(database = NULL, data_path = NULL)
 }
 \arguments{
-\item{database}{Name of local graph database object to wipe}
+\item{database}{Name of local graph database directory to wipe.}
 
 \item{data_path}{Path to the local Neo4J data directory}
 }
@@ -18,9 +18,7 @@ Success or error message
 Wipe a complete local graph database in Neo4J
 }
 \examples{
-\dontrun{
-# wipe movies database from local Neo4J Community 3.5.8 installation
-DB_LOC <- path.expand("~/neo4j-community-3.5.8/data/")
-neo4j_wipe(database = "movies", data_path = DB_LOC)
-}
+# wipe database directory
+fs::dir_create("data/databases/foo")
+neo4j_wipe(database = "foo", data_path = "data")
 }

@@ -20,13 +20,11 @@
 #' neo4j_import(con, source = datafile, import_dir = impdir)
 #' }
 #'
-#' \dontrun{
-#' # import zip to local Neo4J Community 3.5.8 server, with zip in the local system PATH variable
-#' con <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
-#' datafile <- "data.zip"
-#' impdir <- path.expand("~/neo4j-community-3.5.8/import/")
-#' neo4j_import(local = T, con = con, source = datafile, import_dir = impdir)
-#' }
+#' # import zip to local import directory, with zip in the local system PATH variable
+#' write.csv(mtcars, "mtcars.csv")
+#' zip("mtcars.zip", "mtcars.csv")
+#' fs::dir_create("import")
+#' neo4j_import(local = T, source = "mtcars.zip")
 
 
 

@@ -36,11 +36,7 @@ impdir <- "./import"
 neo4j_rmfiles(con = con, files = datafile, import_dir = impdir)
 }
 
-\dontrun{
-# remove file from local Neo4J Community 3.5.8 import directory
-con <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
-datafile <- "data.csv"
-impdir <- path.expand("~/neo4j-community-3.5.8/import/")
-neo4j_rmfiles(local = T, con = con, files = datafile, import_dir = impdir)
-}
+# remove file from local import directory
+fs::file_create("import/data.csv")
+neo4j_rmfiles(local = T, files = "data.csv", import_dir = "import")
 }
