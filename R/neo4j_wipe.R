@@ -21,19 +21,6 @@ neo4j_wipe <- function(database = NULL, data_path = NULL) {
     database <- paste0(database, ".db")
   }
 
-  tmp <- tempfile()
-
-  if (.Platform$OS.type == "windows") {
-    args <- c("/S", "/Q", paste0(data_path, "databases/", database))
-    output <- sys::exec_wait("rd", args, std_err = tmp)
-  } else {
-    args = c("-r", paste0(data_path, "databases/", database))
-    output <- sys::exec_wait("rm", args, std_err = tmp)
-  }
-
-  if (output == 0) {
-    message("Graph wiped successfully!")
-  } else {
-    readLines(tmp) %>% paste(collapse = " ") %>% noquote() %>% stop(call. = FALSE)
-  }
+  fs::dir_delete(paste0(data_path, "databases/", database))
+  message("Graph wiped successfully!")
 }

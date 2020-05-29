@@ -48,22 +48,20 @@ neo4j_rmdir <- function (local = F, con = list(address = NULL, uid = NULL, pwd =
     output <- ssh::ssh_exec_wait(session, command = paste("rm -r", filestring), std_err = tmp1)
     ssh::ssh_disconnect(session)
 
-  } else {
-
-    if (.Platform$OS.type == "windows") {
-      args <- c("/S", "/Q", filestring)
-      output <- sys::exec_wait("rd", args = args, std_err = tmp1)
+    if (output == 0) {
+      message("Directory and all contents removed successfully!")
     } else {
-      args <- c("-r", filestring)
-      output <- sys::exec_wait("rm", args = args, std_err = tmp1)
+      readLines(tmp1) %>% paste(collapse = " ") %>% noquote() %>% stop(call. = FALSE)
     }
+
+  } else {
+
+    fs::dir_delete(filestring)
+    message("Directory and all contents removed successfully!")
+
   }
 
-  if (output == 0) {
-    message("Directory and all contents removed successfuly!")
-  } else {
-    readLines(tmp1) %>% paste(collapse = " ") %>% noquote() %>% stop(call. = FALSE)
-  }
+
 
 }
 

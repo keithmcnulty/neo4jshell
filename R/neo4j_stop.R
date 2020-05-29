@@ -12,5 +12,5 @@
 
 
 neo4j_stop <- function(neo4j_path = "neo4j") {
-  sys::exec_background(neo4j_path, "stop")
+  sys::exec_wait(neo4j_path, "stop")
 }

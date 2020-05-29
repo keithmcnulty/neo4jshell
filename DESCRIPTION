@@ -12,7 +12,9 @@ LazyData: true
 Imports:
     magrittr,
     ssh,
-    sys
+    sys,
+    fs,
+    R.utils
 RoxygenNote: 7.1.0
 Suggests: 
     knitr,

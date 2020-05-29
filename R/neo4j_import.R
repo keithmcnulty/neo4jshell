@@ -85,71 +85,29 @@ neo4j_import <- function (local = F, con = list(address = NULL, uid = NULL, pwd 
       stop("Source is not a .csv, .zip or a .tar.gz file.")
     }
 
+  } else {
+
+    if (substr(source, nchar(source) - 3, nchar(source)) == ".csv") {
+      new <- paste0(import_dir, basename(source))
+      fs::file_copy(source, new, overwrite = T)
+      message("Import successful!")
+    } else if (substr(source, nchar(source) - 3, nchar(source)) == ".zip") {
+      new <- paste0(import_dir, basename(source))
+      fs::file_copy(source, new, overwrite = T)
+      unzip(new, exdir = import_dir, unzip = unzip_path)
+      fs::file_delete(new)
+      message("Import and unzip successful!  Zip file has been removed!")
+    } else if (substr(source, nchar(source) - 6, nchar(source)) == ".tar.gz") {
+      new <- paste0(import_dir, basename(source))
+      fs::file_copy(source, new, overwrite = T)
+      R.utils::gunzip(new)
+      untar(gsub(".gz", "", new), exdir = import_dir, tar = tar_path)
+      fs::file_delete(gsub(".gz", "", new))
+      message("Import and gunzip successful!  Tar file has been removed!")
     } else {
-
-      if (substr(source, nchar(source) - 3, nchar(source)) == ".csv") {
-        if (.Platform$OS.type == "windows") {
-          args <- c(source, import_dir, "/Y")
-          output <- sys::exec_wait("xcopy", args = args, std_err = tmp1)
-        } else {
-          args <- c(source, import_dir)
-          output <- sys::exec_wait("cp", args = args, std_err = tmp1)
-        }
-        if (output == 0) {
-          message("Import successful!")
-        } else {
-          readLines(tmp1) %>% paste(collapse = " ") %>% noquote() %>% stop(call. = FALSE)
-        }
-      } else if (substr(source, nchar(source) - 3, nchar(source)) == ".zip") {
-        if (.Platform$OS.type == "windows") {
-          args <- c(source, import_dir, "/Y")
-          output1 <- sys::exec_wait("xcopy", args = args, std_err = tmp1)
-        } else {
-          args <- c(source, import_dir)
-          output <- sys::exec_wait("cp", args = args, std_err = tmp1)
-        }
-        args <- c("-o", paste0(import_dir, basename(source)), "-d", import_dir)
-        output2 <- sys::exec_wait(unzip_path, args, std_err = tmp2)
-        if (.Platform$OS.type == "windows") {
-          args <- c(paste0(import_dir, basename(source)), "/Q")
-          output3 <- sys::exec_wait("del", args = args, std_err = tmp3)
-        } else {
-          args <- c(paste0(import_dir, basename(source)))
-          output3 <- sys::exec_wait("rm", args = args, std_err = tmp3)
-        }
-        if (output1 == 0 & output2 == 0 & output3 == 0) {
-          message("Import and unzip successful!  Zip file has been removed!")
-        } else {
-          c(readLines(tmp1), readLines(tmp2), readLines(tmp3)) %>% paste(collapse = " ") %>% noquote() %>% stop(call. = FALSE)
-        }
-      } else if (substr(source, nchar(source) - 6, nchar(source)) == ".tar.gz") {
-        if (.Platform$OS.type == "windows") {
-          args <- c(source, import_dir, "/Y")
-          output1 <- sys::exec_wait("xcopy", args = args, std_err = tmp1)
-        } else {
-          args <- c(source, import_dir)
-          output1 <- sys::exec_wait("cp", args = args, std_err = tmp1)
-        }
-        args <- c("-f", paste0(import_dir, basename(source)))
-        output2 <- sys::exec_wait(gunzip_path, args = args, std_err = tmp2)
-        args <- c("-C", import_dir, "-xvf", paste0(import_dir, gsub(".gz", "", basename(source))))
-        output3 <- sys::exec_wait(tar_path, args = args, std_err = tmp3)
-        if (.Platform$OS.type == "windows") {
-          args <- c(paste0(import_dir, gsub(".gz", "", basename(source))), "/Q")
-          output4 <- sys::exec_wait("del", args = args, std_err = tmp4)
-        } else {
-          args <- c(paste0(import_dir, gsub(".gz", "", basename(source))))
-          output4 <- sys::exec_wait("rm", args = args, std_err = tmp4)
-        }
-        if (output1 == 0 & output2 == 0 & output3 == 0 & output4 == 0) {
-          message("Import and gunzip successful!  Tar file has been removed!")
-        } else {
-          c(readLines(tmp1), readLines(tmp2), readLines(tmp3), readLines(tmp4)) %>% paste(collapse = " ") %>% noquote() %>% stop(call. = FALSE)
-        }
-      } else {
-        stop("Source is not a .csv, .zip or a .tar.gz file.")
-      }
-
+      stop("Source is not a .csv, .zip or a .tar.gz file.")
     }
+
+  }
 }
 

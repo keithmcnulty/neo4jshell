@@ -11,5 +11,5 @@
 #' }
 
 neo4j_status <- function(neo4j_path = "neo4j") {
-  sys::exec_background(neo4j_path, "status")
+  sys::exec_wait(neo4j_path, "status")
 }

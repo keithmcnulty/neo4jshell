@@ -49,21 +49,17 @@ neo4j_rmfiles <- function (local = F, con = list(address = NULL, uid = NULL, pwd
     output <- ssh::ssh_exec_wait(session, command = paste("rm", filestring), std_err = tmp1)
     ssh::ssh_disconnect(session)
 
-  } else {
-
-    if (.Platform$OS.type == "windows") {
-      args <- c(files, "/Q")
-      output <- sys::exec_wait("del", args = args, std_err = tmp1)
+    if (output == 0) {
+      message("Files removed successfully!")
     } else {
-      args <- files
-      output <- sys::exec_wait("rm", args = args, std_err = tmp1)
+      readLines(tmp1) %>% paste(collapse = " ") %>% noquote() %>% stop(call. = FALSE)
     }
-  }
 
-  if (output == 0) {
-    message("Files removed successfuly!")
   } else {
-    readLines(tmp1) %>% paste(collapse = " ") %>% noquote() %>% stop(call. = FALSE)
+
+    fs::file_delete(files)
+    message("Files removed successfully!")
+
   }
 
 }
