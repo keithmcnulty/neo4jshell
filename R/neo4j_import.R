@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' # import csv to remote Neo4J server, specifying the path to the import directory relative to the user
+#' # import csv to remote Neo4J server, with relative path to the import directory specified
 #' con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
 #' datafile <- "data.csv"
 #' impdir <- "./import"
@@ -25,6 +25,11 @@
 #' zip("mtcars.zip", "mtcars.csv")
 #' fs::dir_create("import")
 #' neo4j_import(local = TRUE, source = "mtcars.zip")
+#'
+#' # clean up
+#' fs::file_delete("mtcars.zip")
+#' fs::file_delete("mtcars.csv")
+#' fs::dir_delete("import")
 
 
 

@@ -40,4 +40,7 @@ neo4j_rmdir(con = con, dir = my_dir, import_dir = impdir)
 fs::dir_create("import/data")
 fs::file_create("import/data/data.csv")
 neo4j_rmdir(local = TRUE, dir = "data", import_dir = "import")
+
+# clean up
+fs::dir_delete("import")
 }

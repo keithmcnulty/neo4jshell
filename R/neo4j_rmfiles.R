@@ -21,6 +21,9 @@
 #' fs::dir_create("import")
 #' fs::file_create("import/data.csv")
 #' neo4j_rmfiles(local = TRUE, files = "data.csv", import_dir = "import")
+#'
+#' # clean up
+#' fs::dir_delete("import")
 
 
 

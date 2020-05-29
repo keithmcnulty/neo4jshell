@@ -21,4 +21,7 @@ Wipe a complete local graph database in Neo4J
 # wipe database directory
 fs::dir_create("data/databases/foo")
 neo4j_wipe(database = "foo", data_path = "data")
+
+# clean up
+fs::dir_delete("data")
 }
