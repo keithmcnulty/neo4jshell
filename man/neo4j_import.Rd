@@ -49,5 +49,5 @@ neo4j_import(con, source = datafile, import_dir = impdir)
 write.csv(mtcars, "mtcars.csv")
 zip("mtcars.zip", "mtcars.csv")
 fs::dir_create("import")
-neo4j_import(local = T, source = "mtcars.zip")
+neo4j_import(local = TRUE, source = "mtcars.zip")
 }

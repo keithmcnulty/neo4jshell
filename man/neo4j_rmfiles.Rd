@@ -37,6 +37,7 @@ neo4j_rmfiles(con = con, files = datafile, import_dir = impdir)
 }
 
 # remove file from local import directory
+fs::dir_create("import")
 fs::file_create("import/data.csv")
-neo4j_rmfiles(local = T, files = "data.csv", import_dir = "import")
+neo4j_rmfiles(local = TRUE, files = "data.csv", import_dir = "import")
 }

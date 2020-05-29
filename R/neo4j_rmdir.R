@@ -17,13 +17,10 @@
 #' neo4j_rmdir(con = con, dir = my_dir, import_dir = impdir)
 #' }
 #'
-#' \dontrun{
-#' # remove a subdirectory and all its contents from the local Neo4J Community 3.5.8 import directory
-#' con <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
-#' my_dir <- "my_data"
-#' impdir <- path.expand("~/neo4j-community-3.5.8/import/")
-#' neo4j_rmdir(local = T, con = con, dir = my_dir, import_dir = impdir)
-#' }
+#' # remove a subdirectory and all its contents from the local import directory
+#' fs::dir_create("import/data")
+#' fs::file_create("import/data/data.csv")
+#' neo4j_rmdir(local = TRUE, dir = "data", import_dir = "import")
 
 
 
