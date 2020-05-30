@@ -23,7 +23,7 @@ This package contains functions for administering a local Neo4J server.
 ```{r example, eval = FALSE}
 library(neo4jshell)
 
-neo_path <- path.expand("~/neo4j-community-3.5.8/bin/neo4j")
+neo_path <- path.expand("~/neo4j-community-4.0.4/bin/neo4j")
 neo4j_status(neo_path)
 ```
 
@@ -38,9 +38,13 @@ All these functions output system messages.
 
 ``` {r example2, eval = FALSE}
 graphfile <- "graph.db"
-my_data_path <- path.expand("~/neo4j-community-3.5.8/data")
+my_data_path <- path.expand("~/neo4j-community-4.0.4/data")
 neo4j_wipe(graphfile, my_data_path)
 
 ```
 
 This function will output a success or an error message.
+
+### Note for Windows users
+
+Paths to executable files that are provided as arguments to functions may need to be provided with appropriate extensions (eg `neo4j.bat`).

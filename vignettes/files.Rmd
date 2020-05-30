@@ -23,12 +23,12 @@ The function `neo4j_import()` copies a `.csv`, `.zip` or `.tar.gz` file into the
 `neo4j_import()` takes the following arguments:
 
 * `local` should be a logical value indicating if the Neo4J server is locally or remotely hosted.
-* `con` should be a list containing three elements:  `address`, which should be the bolt address of the Neo4J server, and `uid` and `pwd` as login credentials.  Only used if `local = FALSE`.
+* `con` should be a list containing three elements:  `address`, which should be address of the Neo4J hosting server, and `uid` and `pwd` as login credentials. The bolt address used for querying can be used only if the hosting server uses the same address.  Only used if `local = FALSE`.
 * `source` is the local path to the file to be imported.  Use `path.expand()` if necessary.
 * `import_dir` is the local or remote path to the Neo4J import directory. Use `path.expand()` if necessary.
-* `unzip_path` is the path to the `unzip` executable on the local or remote server.  Only used if `zip` is imported.
-* `gunzip_path` is the path to the `gunzip` executable on the local or remote server. Only used if `.tar.gz` is imported.
-* `tar_path` is the path to the `tar` executable on the local or remote server.  Only used if `.tar.gz` is imported.
+* `unzip_path` is the path to the `unzip` executable on the local or remote server.  Only used if a `zip` is imported.
+* `gunzip_path` is the path to the `gunzip` executable on the local or remote server. Only used if a `.tar.gz` is imported.
+* `tar_path` is the path to the `tar` executable on the local or remote server.  Only used if a `.tar.gz` is imported.
 
 Example, importing a file named `data.csv` to a locally hosted Neo4J server:
 
@@ -36,7 +36,7 @@ Example, importing a file named `data.csv` to a locally hosted Neo4J server:
 library(neo4jshell)
 
 file  <- "data.csv" # assumes file is present in current working directory
-impdir <- path.expand("~/neo4j-community-3.5.8/import")
+impdir <- path.expand("~/neo4j-community-4.0.4/import")
 neo4j_import(local = TRUE, source = file, import_dir = impdir)
 
 ```
@@ -50,7 +50,7 @@ The function `neo4j_rmfiles()` allows the removal of files from the specified Ne
 `neo4j_rmfiles()` takes the following arguments:
 
 * `local` should be a logical value indicating if the Neo4J server is locally or remotely hosted.
-* `con` should be a list containing three elements:  `address`, which should be the bolt address of the Neo4J server, and `uid` and `pwd` as login credentials.  Only used if `local = FALSE`.
+* `con` should be a list containing three elements:  `address`, which should be the address of the Neo4J hosting server, and `uid` and `pwd` as login credentials.  The bolt address used for querying can be used only if the hosting server uses the same address. Only used if `local = FALSE`.
 * `source` is a character vector listing the names of the files to be removed from the import directory.  
 * `import_dir` is the local or remote path to the Neo4J import directory. Use `path.expand()` if necessary.
 
@@ -69,12 +69,12 @@ The function returns either a success message or an error message.
 
 ### Removing subdirectories from the import directory
 
-The function `neo4j_rmdir()` allows the removal of an entire subdirectory and all its contents from the specified Neo4J import directory, which can be useful for cleaning up following import. 
+The function `neo4j_rmdir()` allows the removal of an entire sub-directory and all its contents from the specified Neo4J import directory, which can be useful for cleaning up following import. 
 
 `neo4j_rmdir()` takes the following arguments:
 
 * `local` should be a logical value indicating if the Neo4J server is locally or remotely hosted.
-* `con` should be a list containing three elements:  `address`, which should be the bolt address of the Neo4J server, and `uid` and `pwd` as login credentials.  Only used if `local = FALSE`.
+* `con` should be a list containing three elements:  `address`, which should be the address of the Neo4J hosting server, and `uid` and `pwd` as login credentials.  The bolt address used for querying can be used only if the hosting server uses the same address. Only used if `local = FALSE`.
 * `dir` is the name of the subdirectory of the import directory to be removed.  
 * `import_dir` is the local or remote path to the Neo4J import directory. Use `path.expand()` if necessary.
 
@@ -84,7 +84,7 @@ Example, removing a directory called `data` from a locally hosted Neo4J server:
 library(neo4jshell)
 
 datadir  <- "data" 
-impdir <- path.expand("~/neo4j-community-3.5.8/import")
+impdir <- path.expand("~/neo4j-community-4.0.4/import")
 neo4j_rmdir(local = TRUE, dir = datadir, import_dir = impdir)
 
 ```
@@ -98,4 +98,8 @@ These functions can be used in combination with `neo4j_query()` to set up smooth
 1. `neo4j_import()` to transfer a data file into the import directory or into a subdirectory (if the compressed file involves a subdirectory).
 2. `neo4j_query()` to execute a load query referencing the imported file.
 3. `neo4j_rmfiles()` or `neo4j_rmdir()` to remove the imported files following a successful load query.
+
+### Note for Windows users
+
+Paths to executable files that are provided as arguments to functions may need to be provided with appropriate extensions (eg `cypher-shell.bat`).
 

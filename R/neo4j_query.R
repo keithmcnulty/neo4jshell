@@ -3,7 +3,7 @@
 #' @param con List containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server
 #' @param qry Character string of the query or queries to be sent to Neo4J.  Read queries should be single queries.
 #' @param shell_path If cypher-shell is not in the PATH system variable, the full local path to cypher-shell executable.
-#' @param database The name of the database if working in a multi-tenency instance of Neo4J.
+#' @param database The name of the database if other than the default database.  (For multi-tenancy installations).
 #' @param encryption Passes encryption argument to cypher-shell if necessary.  Older versions of cypher-shell may require 'true' or 'false' to be passed.
 #'
 #' @return A dataframe of results if the read query is successful.  A text string if an error is encountered.

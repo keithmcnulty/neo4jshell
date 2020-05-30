@@ -21,16 +21,18 @@ The function `neo4j_query()` can be used to send a query to a local or remote Ne
 * `con` should be a list containing three elements:  `address`, which should be the bolt address of the Neo4J server, and `uid` and `pwd` as login credentials
 * `qry` should be a character string representing the query to be sent to Neo4J
 * `shell_path` should be the full path to the `cypher-shell` executable.  The default value assumes that `cypher-shell` is already in the system path.  Use `path.expand()` if necessary.  
+* `database` specifies the database to be queried if not the default database.  (For multitenancy Neo4J installations).
+* `encryption` is the encryption option passed to `cypher-shell`.  This may be required as explicitly `'true'` or `'false'` for older installations.
 
 Example, assuming a local Neo4J instance running the movies graph:
 
 ```{r example, eval = FALSE}
 library(neo4jshell)
 
-neo4j_local <- list(address = "bolt://localhost", uid = "neo4juser", pwd = "neo4juser")
+neo4j_local <- list(address = "bolt://localhost", uid = "neo4j", pwd = "password")
 CQL <- 'MATCH (p1:Person {name: "Kevin Bacon"})-[:ACTED_IN]->(m:Movie)<-[:DIRECTED]-(p2:Person)
         RETURN p2.name AS Name, m.title AS Title'
-cypher_path <- path.expand("~/neo4j-community-3.5.8/bin/cypher-shell")
+cypher_path <- path.expand("~/neo4j-community-4.0.4/bin/cypher-shell")
 neo4j_query(con = neo4j_local, qry = CQL, shell_path = cypher_path)
 
 ```
@@ -50,4 +52,6 @@ data.frame(Name = c("Ron Howard", "Rob Reiner", "Ron Howard"),
 * A message indicating successful execution if the query is a write query.
 * An error message if an error occurred.  If there were multiple statements, the response for all statements will be displayed.
 
+### Note for Windows users
 
+Paths to executable files that are provided as arguments to functions may need to be provided with appropriate extensions (eg `cypher-shell.bat`).

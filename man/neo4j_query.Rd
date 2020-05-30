@@ -19,7 +19,7 @@ neo4j_query(
 
 \item{shell_path}{If cypher-shell is not in the PATH system variable, the full local path to cypher-shell executable.}
 
-\item{database}{The name of the database if working in a multi-tenency instance of Neo4J.}
+\item{database}{The name of the database if other than the default database.  (For multi-tenancy installations).}
 
 \item{encryption}{Passes encryption argument to cypher-shell if necessary.  Older versions of cypher-shell may require 'true' or 'false' to be passed.}
 }
