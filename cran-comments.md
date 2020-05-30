@@ -19,4 +19,4 @@ Addressed feedback from last submission on 2020-05-15:
 4. Added examples to the Rd files.  Examples that cannot be tested due to external software dependencies have been enclosed in `\dontrun{}`
 5. Added cph to my role. 
 
-Also took the opportunity to improve some of the codebase.
+Also took the opportunity to improve some of the codebase, vignettes and README.
