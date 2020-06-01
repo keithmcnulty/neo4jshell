@@ -21,7 +21,7 @@ administration of local servers for development purposes.
 
 ## Pre-installation notes
 
-This package requires uses the `ssh` package for interacting with remote
+This package requires the `ssh` package for interacting with remote
 ‘Neo4J’ databases, which requires `libssh` to be installed. See the
 vignettes for the `ssh` package
 [here](https://CRAN.R-project.org/package=ssh) for more details.
@@ -221,7 +221,7 @@ For example:
 
 # my server was already running, confirm
 neo4j_status()
-#> Neo4j is running at pid 3045
+#> Neo4j is running at pid 1771
 #> [1] 0
 
 # stop the server
@@ -241,7 +241,7 @@ neo4j_start()
 #>   certificates: /Users/keithmcnulty/neo4j-community-4.0.4/certificates
 #>   run:          /Users/keithmcnulty/neo4j-community-4.0.4/run
 #> Starting Neo4j.
-#> Started neo4j (pid 3225). It is available at http://localhost:7474/
+#> Started neo4j (pid 1924). It is available at http://localhost:7474/
 #> There may be a short delay until the server is ready.
 #> See /Users/keithmcnulty/neo4j-community-4.0.4/logs/neo4j.log for current status.
 #> [1] 0

@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 The goal of neo4jshell is to provide rapid querying of 'Neo4J' graph databases by offering a programmatic interface with 'cypher-shell'.  A wide variety of other functions are offered that allow importing and management of data files for local and remote servers, as well as simple administration of local servers for development purposes.    
 
 ## Pre-installation notes
-This package requires uses the `ssh` package for interacting with remote 'Neo4J' databases, which requires `libssh` to be installed.  See the vignettes for the `ssh` package [here](https://CRAN.R-project.org/package=ssh) for more details.
+This package requires the `ssh` package for interacting with remote 'Neo4J' databases, which requires `libssh` to be installed.  See the vignettes for the `ssh` package [here](https://CRAN.R-project.org/package=ssh) for more details.
 
 This package also requires the 'cypher-shell' executable to be available **locally**.  This is installed as standard in 'Neo4J' installations and can usually be found in the `bin` directory of that installation.  It can also be installed standalone using Homebrew or is available here:  https://github.com/neo4j/cypher-shell.
 
