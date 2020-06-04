@@ -5,7 +5,7 @@
 #' @return System messages
 #'
 #' @examples
-#' # restart local graph with neo4j executable in the system PATH variable
+#' # if neo4j exists, restart local graph with neo4j executable in the system PATH variable
 #' if(nzchar(Sys.which("neo4j"))) {
 #'   neo4j_restart()
 #' }

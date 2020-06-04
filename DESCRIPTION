@@ -19,5 +19,7 @@ RoxygenNote: 7.1.0
 Suggests: 
     knitr,
     rmarkdown
-SystemRequirements: neo4j - http://www.neo4j.com
+SystemRequirements: 
+    neo4j - http://www.neo4j.com,
+    cypher-shell - https://github.com/neo4j/cypher-shell/releases
 VignetteBuilder: knitr

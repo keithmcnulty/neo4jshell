@@ -16,7 +16,7 @@ System messages
 Restart a local Neo4J database
 }
 \examples{
-# restart local graph with neo4j executable in the system PATH variable
+# if neo4j exists, restart local graph with neo4j executable in the system PATH variable
 if(nzchar(Sys.which("neo4j"))) {
   neo4j_restart()
 }
