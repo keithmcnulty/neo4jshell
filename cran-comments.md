@@ -14,6 +14,6 @@
 Addressed feedback from last submission on 2020-05-30:
 
 1. Corrected unquoted software name in DESCRIPTION --> 'R'
-2. Created executable examples for all functions.  (Some examples are wrapped in a check for the existence of the software.)
+2. Created executable examples for all functions.  (Some examples are wrapped in a check for the existence of external software.)
 3. Ensured all logicals are written as TRUE, FALSE
 4. Added SystemRequirements to the DESCRIPTION.
