@@ -1,6 +1,6 @@
 Package: neo4jshell
 Type: Package
-Title: Querying and Managing 'Neo4J' Databases in R 
+Title: Querying and Managing 'Neo4J' Databases in 'R' 
 Version: 0.1.0
 Authors@R: person("Keith", "McNulty", email = "keith.mcnulty@gmail.com",
                   role = c("aut", "cre", "cph"))
