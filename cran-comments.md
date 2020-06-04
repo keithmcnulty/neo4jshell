@@ -11,12 +11,9 @@
 
 ## Changes from previous submission
 
-Addressed feedback from last submission on 2020-05-15:
+Addressed feedback from last submission on 2020-05-30:
 
-1. Shortened Title
-2. Added undirected quotes for software names in Title and Description.
-3. Fixed incorrect capitalization in description text.
-4. Added examples to the Rd files.  Examples that cannot be tested due to external software dependencies have been enclosed in `\dontrun{}`
-5. Added cph to my role. 
-
-Also took the opportunity to improve some of the codebase, vignettes and README.
+1. Corrected unquoted software name in DESCRIPTION --> 'R'
+2. Created executable examples for all functions.  (Some examples are wrapped in a check for the existence of the software.)
+3. Ensured all logicals are written as TRUE, FALSE
+4. Added SystemRequirements to the DESCRIPTION.
