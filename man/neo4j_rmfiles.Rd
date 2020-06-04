@@ -5,7 +5,7 @@
 \title{Remove files from the Neo4J import directory}
 \usage{
 neo4j_rmfiles(
-  local = F,
+  local = FALSE,
   con = list(address = NULL, uid = NULL, pwd = NULL),
   files = NULL,
   import_dir = "import"
@@ -14,7 +14,7 @@ neo4j_rmfiles(
 \arguments{
 \item{local}{Logical indicating whether import is to a locally hosted or remotely hosted server.}
 
-\item{con}{If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server.
+\item{con}{If remotely hosted server, list containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server.
 uid and pwd must be for an account on the server with appropriate permissions.}
 
 \item{files}{Character vector of file names to be removed.}
@@ -28,19 +28,9 @@ A success message if successful.  An error message otherwise.
 Remove files from the Neo4J import directory
 }
 \examples{
-\dontrun{
-# remove file from remote Neo4J import directory
-con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
-datafile <- "data.csv"
-impdir <- "./import"
-neo4j_rmfiles(con = con, files = datafile, import_dir = impdir)
-}
-
 # remove file from local import directory
 fs::dir_create("import")
 fs::file_create("import/data.csv")
 neo4j_rmfiles(local = TRUE, files = "data.csv", import_dir = "import")
-
-# clean up
 fs::dir_delete("import")
 }

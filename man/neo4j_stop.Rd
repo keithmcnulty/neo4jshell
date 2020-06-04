@@ -16,8 +16,8 @@ System messages
 Stop a local Neo4J database
 }
 \examples{
-\dontrun{
-# stop local graph with neo4j executable in the system PATH variable
-neo4j_stop()
+# if neo4j exists, stop local graph with neo4j executable in the system PATH variable
+if(nzchar(Sys.which("neo4j"))) {
+  neo4j_stop()
 }
 }

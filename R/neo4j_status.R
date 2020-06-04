@@ -5,10 +5,11 @@
 #' @return System messages
 #'
 #' @examples
-#' \dontrun{
-#' # Check status local graph with neo4j executable in the system PATH variable
-#' neo4j_status()
+#' # if neo4j exists, check status local graph with neo4j executable in the system PATH variable
+#' if(nzchar(Sys.which("neo4j"))) {
+#'   neo4j_status()
 #' }
+
 
 neo4j_status <- function(neo4j_path = "neo4j") {
   sys::exec_wait(neo4j_path, "status")

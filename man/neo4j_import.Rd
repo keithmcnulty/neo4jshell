@@ -5,7 +5,7 @@
 \title{Imports a csv or a compressed file to Neo4J import folder.}
 \usage{
 neo4j_import(
-  local = F,
+  local = FALSE,
   con = list(address = NULL, uid = NULL, pwd = NULL),
   source = NULL,
   import_dir = "import",
@@ -17,7 +17,7 @@ neo4j_import(
 \arguments{
 \item{local}{Logical indicating whether import is to a locally hosted or a remotely hosted server.}
 
-\item{con}{If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server.
+\item{con}{If remotely hosted server, list containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server.
 uid and pwd must be for an account on the server with appropriate permissions.}
 
 \item{source}{Character string of local path to the csv, zip or tar.gz compressed csv file to be imported}
@@ -37,21 +37,11 @@ System messages confirming success or error.  zip or tar files will be removed a
 Imports a csv or a compressed file to Neo4J import folder.
 }
 \examples{
-\dontrun{
-# import csv to remote Neo4J server, with relative path to the import directory specified
-con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
-datafile <- "data.csv"
-impdir <- "./import"
-neo4j_import(con, source = datafile, import_dir = impdir)
-}
-
 # import zip to local import directory, with zip in the local system PATH variable
 write.csv(mtcars, "mtcars.csv")
 zip("mtcars.zip", "mtcars.csv")
 fs::dir_create("import")
 neo4j_import(local = TRUE, source = "mtcars.zip")
-
-# clean up
 fs::file_delete("mtcars.zip")
 fs::file_delete("mtcars.csv")
 fs::dir_delete("import")

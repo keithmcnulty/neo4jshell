@@ -5,10 +5,11 @@
 #' @return System messages
 #'
 #' @examples
-#' \dontrun{
-#' # start local graph on with neo4j executable in the system PATH variable
-#' neo4j_start()
+#' # if neo4j exists, start local graph on with neo4j executable in the system PATH variable
+#' if(nzchar(Sys.which("neo4j"))) {
+#'   neo4j_start()
 #' }
+
 
 
 neo4j_start <- function(neo4j_path = "neo4j") {

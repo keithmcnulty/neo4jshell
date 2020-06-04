@@ -5,9 +5,9 @@
 #' @return System messages
 #'
 #' @examples
-#' \dontrun{
 #' # restart local graph with neo4j executable in the system PATH variable
-#' neo4j_restart()
+#' if(nzchar(Sys.which("neo4j"))) {
+#'   neo4j_restart()
 #' }
 
 

@@ -1,7 +1,7 @@
 #' Imports a csv or a compressed file to Neo4J import folder.
 #'
 #' @param local Logical indicating whether import is to a locally hosted or a remotely hosted server.
-#' @param con If remotely hosted server, list containing three objects: bolt address, uid, pwd as character strings providing connection to the Neo4J server.
+#' @param con If remotely hosted server, list containing three objects: address, uid, pwd as character strings providing connection to the Neo4J server.
 #'   uid and pwd must be for an account on the server with appropriate permissions.
 #' @param source Character string of local path to the csv, zip or tar.gz compressed csv file to be imported
 #' @param import_dir Character string of full path to the Neo4J import directory
@@ -12,28 +12,18 @@
 #' @return System messages confirming success or error.  zip or tar files will be removed after import and decompression.
 #'
 #' @examples
-#' \dontrun{
-#' # import csv to remote Neo4J server, with relative path to the import directory specified
-#' con <- list(address = "bolt://bolt.my-neo4j-server.com", uid = "my_username", pwd = "my_password")
-#' datafile <- "data.csv"
-#' impdir <- "./import"
-#' neo4j_import(con, source = datafile, import_dir = impdir)
-#' }
-#'
 #' # import zip to local import directory, with zip in the local system PATH variable
 #' write.csv(mtcars, "mtcars.csv")
 #' zip("mtcars.zip", "mtcars.csv")
 #' fs::dir_create("import")
 #' neo4j_import(local = TRUE, source = "mtcars.zip")
-#'
-#' # clean up
 #' fs::file_delete("mtcars.zip")
 #' fs::file_delete("mtcars.csv")
 #' fs::dir_delete("import")
 
 
 
-neo4j_import <- function (local = F, con = list(address = NULL, uid = NULL, pwd = NULL), source = NULL,
+neo4j_import <- function (local = FALSE, con = list(address = NULL, uid = NULL, pwd = NULL), source = NULL,
                           import_dir = "import", unzip_path = "unzip",
                           gunzip_path = "gunzip", tar_path = "tar") {
 
@@ -47,7 +37,7 @@ neo4j_import <- function (local = F, con = list(address = NULL, uid = NULL, pwd 
   tmp3 <- tempfile()
   tmp4 <- tempfile()
 
-  if (!local) {
+  if (local == FALSE) {
 
     base_address <- basename(con$address)
     if (grepl(":", base_address)) {
@@ -92,17 +82,17 @@ neo4j_import <- function (local = F, con = list(address = NULL, uid = NULL, pwd 
 
     if (substr(source, nchar(source) - 3, nchar(source)) == ".csv") {
       new <- paste0(import_dir, basename(source))
-      fs::file_copy(source, new, overwrite = T)
+      fs::file_copy(source, new, overwrite = TRUE)
       message("Import successful!")
     } else if (substr(source, nchar(source) - 3, nchar(source)) == ".zip") {
       new <- paste0(import_dir, basename(source))
-      fs::file_copy(source, new, overwrite = T)
+      fs::file_copy(source, new, overwrite = TRUE)
       unzip(new, exdir = import_dir, unzip = unzip_path)
       fs::file_delete(new)
       message("Import and unzip successful!  Zip file has been removed!")
     } else if (substr(source, nchar(source) - 6, nchar(source)) == ".tar.gz") {
       new <- paste0(import_dir, basename(source))
-      fs::file_copy(source, new, overwrite = T)
+      fs::file_copy(source, new, overwrite = TRUE)
       R.utils::gunzip(new)
       untar(gsub(".gz", "", new), exdir = import_dir, tar = tar_path)
       fs::file_delete(gsub(".gz", "", new))

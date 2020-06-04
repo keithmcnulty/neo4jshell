@@ -11,19 +11,13 @@
 #' If multiple read queries were submitted, only the results of the final query will be returned.
 #'
 #' @examples
-#' # start the server
-#' if(nchar(Sys.which("neo4j")) > 0) {
+#' # if neo4j exists, start the local server, give it a moment to fire up, and run a query
+#' if(nzchar(Sys.which("neo4j"))) {
 #'   neo4j_start()
 #'   Sys.sleep(1)
-#' }
-#'
-#'
-#' # query local Neo4J Community 3.5.8 server, with cypher-shell not in local system PATH variable
-#' if(nchar(Sys.which("cypher-shell")) > 0) {
 #'   graph <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
 #'   neo4j_query(con = graph, qry = "MATCH (n) RETURN (n)")
 #' }
-
 
 
 

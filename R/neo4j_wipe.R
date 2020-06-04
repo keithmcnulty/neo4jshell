@@ -9,8 +9,6 @@
 #' # wipe database directory
 #' fs::dir_create("data/databases/foo")
 #' neo4j_wipe(database = "foo", data_path = "data")
-#'
-#' # clean up
 #' fs::dir_delete("data")
 
 neo4j_wipe <- function(database = NULL, data_path = NULL) {
