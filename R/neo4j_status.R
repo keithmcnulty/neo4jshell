@@ -6,7 +6,7 @@
 #'
 #' @examples
 #' # if neo4j exists, check status local graph with neo4j executable in the system PATH variable
-#' if(nzchar(Sys.which("neo4j"))) {
+#' if (nzchar(Sys.which("neo4j"))) {
 #'   neo4j_status()
 #' }
 

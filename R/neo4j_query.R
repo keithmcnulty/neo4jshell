@@ -12,7 +12,7 @@
 #'
 #' @examples
 #' # if neo4j exists, start the local server, give it a moment to fire up, and run a query
-#' if(nzchar(Sys.which("neo4j"))) {
+#' if (nzchar(Sys.which("neo4j"))) {
 #'   neo4j_start()
 #'   Sys.sleep(2)
 #'   graph <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")

@@ -17,7 +17,7 @@ Start a local Neo4J database
 }
 \examples{
 # if neo4j exists, start local graph on with neo4j executable in the system PATH variable
-if(nzchar(Sys.which("neo4j"))) {
+if (nzchar(Sys.which("neo4j"))) {
   neo4j_start()
 }
 }
