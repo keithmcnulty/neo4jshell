@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# neo4jshell
+# neo4jshell <img src="neo4jshell.png" align="right" width="200"/>
 
 <!-- badges: start -->
 
@@ -221,7 +221,7 @@ For example:
 
 # my server was already running, confirm
 neo4j_status()
-#> Neo4j is running at pid 1771
+#> Neo4j is running at pid 4654
 #> [1] 0
 
 # stop the server
@@ -241,7 +241,7 @@ neo4j_start()
 #>   certificates: /Users/keithmcnulty/neo4j-community-4.0.4/certificates
 #>   run:          /Users/keithmcnulty/neo4j-community-4.0.4/run
 #> Starting Neo4j.
-#> Started neo4j (pid 1924). It is available at http://localhost:7474/
+#> Started neo4j (pid 4806). It is available at http://localhost:7474/
 #> There may be a short delay until the server is ready.
 #> See /Users/keithmcnulty/neo4j-community-4.0.4/logs/neo4j.log for current status.
 #> [1] 0

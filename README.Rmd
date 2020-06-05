@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 
 ```
 
-# neo4jshell
+# neo4jshell <img src="neo4jshell.png" align="right" width="200"/>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
