@@ -7,6 +7,8 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/neo4jshell)](https://CRAN.R-project.org/package=neo4jshell)
 [![R build
 status](https://github.com/keithmcnulty/neo4jshell/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/neo4jshell/actions)
 [![Travis build
@@ -221,7 +223,7 @@ For example:
 
 # my server was already running, confirm
 neo4j_status()
-#> Neo4j is running at pid 4654
+#> Neo4j is running at pid 5267
 #> [1] 0
 
 # stop the server
@@ -241,7 +243,7 @@ neo4j_start()
 #>   certificates: /Users/keithmcnulty/neo4j-community-4.0.4/certificates
 #>   run:          /Users/keithmcnulty/neo4j-community-4.0.4/run
 #> Starting Neo4j.
-#> Started neo4j (pid 4806). It is available at http://localhost:7474/
+#> Started neo4j (pid 5434). It is available at http://localhost:7474/
 #> There may be a short delay until the server is ready.
 #> See /Users/keithmcnulty/neo4j-community-4.0.4/logs/neo4j.log for current status.
 #> [1] 0
