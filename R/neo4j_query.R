@@ -105,7 +105,7 @@ neo4j_query <- function(con = list(address = NULL, uid = NULL, pwd = NULL), qry 
       tmp <- gsub("(?:\\G(?!^)|\\[)[^][,]*\\K,(?=[^][]*])", ";;;", tmp, perl = TRUE) # deal with embedded [] lists for read.csv
       tmp <- gsub("(?:\\G(?!^)|\\{)[^{},]*\\K,(?=[^{}]*})", ";;;", tmp, perl = TRUE) # deal with embedded {} lists for read.csv
       write(tmp, tmp_final)
-      r <- read.csv(tmp_final, strip.white = TRUE)
+      r <- read.csv(tmp_final, colClasses = "character", strip.white = TRUE)
       r <- sapply(r, function (x) gsub(";;;", ",", x))
       as.data.frame(r, stringsAsFactors = FALSE)
     } else {
