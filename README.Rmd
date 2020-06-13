@@ -19,6 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/neo4jshell)](https://CRAN.R-project.org/package=neo4jshell)
+[![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/neo4jshell?color=green)](https://cran.r-project.org/package=neo4jshell)
 [![R build status](https://github.com/keithmcnulty/neo4jshell/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/neo4jshell/actions)
 [![Travis build status](https://travis-ci.com/keithmcnulty/neo4jshell.svg?branch=master)](https://travis-ci.com/keithmcnulty/neo4jshell)
 <!-- badges: end -->
@@ -118,6 +119,9 @@ If you are working with the 'Neo4J' server locally, below will help you get star
 First, the code below is relative to user and is using 'Neo4J 4.0.4 Community' installed at my user's root.  The directory containing  the 'cypher-shell' and 'neo4j' executables are in my system's PATH environment variables.
 
 ``` {r}
+## start the local server
+neo4j_start()
+
 ## setup connection credentials and import directory location
 neo_con <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
 import_loc <- path.expand("~/neo4j-community-4.0.4/import/")

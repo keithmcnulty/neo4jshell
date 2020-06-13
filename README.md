@@ -9,6 +9,8 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/neo4jshell)](https://CRAN.R-project.org/package=neo4jshell)
+[![Total
+Downloads](http://cranlogs.r-pkg.org/badges/grand-total/neo4jshell?color=green)](https://cran.r-project.org/package=neo4jshell)
 [![R build
 status](https://github.com/keithmcnulty/neo4jshell/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/neo4jshell/actions)
 [![Travis build
@@ -147,6 +149,20 @@ Community’ installed at my user’s root. The directory containing the
 environment variables.
 
 ``` r
+## start the local server
+neo4j_start()
+#> Directories in use:
+#>   home:         /Users/keithmcnulty/neo4j-community-4.0.4
+#>   config:       /Users/keithmcnulty/neo4j-community-4.0.4/conf
+#>   logs:         /Users/keithmcnulty/neo4j-community-4.0.4/logs
+#>   plugins:      /Users/keithmcnulty/neo4j-community-4.0.4/plugins
+#>   import:       /Users/keithmcnulty/neo4j-community-4.0.4/import
+#>   data:         /Users/keithmcnulty/neo4j-community-4.0.4/data
+#>   certificates: /Users/keithmcnulty/neo4j-community-4.0.4/certificates
+#>   run:          /Users/keithmcnulty/neo4j-community-4.0.4/run
+#> Neo4j is already running (pid 2103).
+#> [1] 0
+
 ## setup connection credentials and import directory location
 neo_con <- list(address = "bolt://localhost:7687", uid = "neo4j", pwd = "password")
 import_loc <- path.expand("~/neo4j-community-4.0.4/import/")
@@ -223,7 +239,7 @@ For example:
 
 # my server was already running, confirm
 neo4j_status()
-#> Neo4j is running at pid 5267
+#> Neo4j is running at pid 2103
 #> [1] 0
 
 # stop the server
@@ -243,7 +259,7 @@ neo4j_start()
 #>   certificates: /Users/keithmcnulty/neo4j-community-4.0.4/certificates
 #>   run:          /Users/keithmcnulty/neo4j-community-4.0.4/run
 #> Starting Neo4j.
-#> Started neo4j (pid 5434). It is available at http://localhost:7474/
+#> Started neo4j (pid 12838). It is available at http://localhost:7474/
 #> There may be a short delay until the server is ready.
 #> See /Users/keithmcnulty/neo4j-community-4.0.4/logs/neo4j.log for current status.
 #> [1] 0
