@@ -6,3 +6,4 @@
 ^codecov\.yml$
 ^cran-comments\.md$
 ^README\.Rmd$
+neo4jshell.png
