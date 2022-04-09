@@ -1,13 +1,17 @@
 Package: neo4jshell
 Type: Package
 Title: Querying and Managing 'Neo4J' Databases in 'R' 
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     c(person(given = "Keith",
              family = "McNulty",
              role = c("cre", "aut", "cph"),
              email = "keith.mcnulty@gmail.com",
-             comment = c(ORCID = "0000-0002-2332-1654")))
+             comment = c(ORCID = "0000-0002-2332-1654")),
+             person(given = "Liz",
+             family = "Romero",
+             role = c("ctb"),
+             email = "liz.romero357@gmail.com"))
 Description: Sends queries to a specified 'Neo4J' graph database, capturing results in a dataframe where appropriate.  
     Other useful functions for the importing and management of data on the 'Neo4J' server and basic local server admin.  
 License: MIT + file LICENSE
