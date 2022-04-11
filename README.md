@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/neo4jshell)](https://CRAN.R-project.org/package=neo4jshell)
 [![Total
@@ -14,7 +14,7 @@ Downloads](http://cranlogs.r-pkg.org/badges/grand-total/neo4jshell?color=green)]
 [![R build
 status](https://github.com/keithmcnulty/neo4jshell/workflows/R-CMD-check/badge.svg)](https://github.com/keithmcnulty/neo4jshell/actions)
 [![Travis build
-status](https://travis-ci.com/keithmcnulty/neo4jshell.svg?branch=master)](https://travis-ci.com/keithmcnulty/neo4jshell)
+status](https://app.travis-ci.com/keithmcnulty/neo4jshell.svg?branch=master)](https://app.travis-ci.com/keithmcnulty/neo4jshell)
 <!-- badges: end -->
 
 The goal of neo4jshell is to provide rapid querying of ‘Neo4J’ graph
