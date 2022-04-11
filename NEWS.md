@@ -6,3 +6,8 @@
 # neo4jshell 0.1.2
 
 * Fixed a bug that returned unexpected output shape for single row results from `neo4j_query()`.
+
+# neo4jshell 0.1.2.9000
+
+
+

@@ -1,7 +1,7 @@
 Package: neo4jshell
 Type: Package
 Title: Querying and Managing 'Neo4J' Databases in 'R' 
-Version: 0.1.2
+Version: 0.1.2.9000
 Authors@R: 
     c(person(given = "Keith",
              family = "McNulty",
