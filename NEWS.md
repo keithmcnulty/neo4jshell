@@ -9,5 +9,7 @@
 
 # neo4jshell 0.1.2.9000
 
+* Fixed a bug that caused problems when certain escaped double quotes are present in strings  
+
 
 
